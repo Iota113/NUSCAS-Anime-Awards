@@ -33,7 +33,7 @@ const CATEGORIES = [
         secondary: "Madhouse" 
       },
       { name: "Uma Musume: Cinderella Grey", image: "assets/images/uma", video: "", secondary: "" },
-      { name: "Anime Title 3", image: "", video: "", secondary: "" },
+      { name: "Anime Title 3", image: "", video: "assets/clips/Frieren Beyond Journey's End「AMV」- Still Here [4K-Edit] - Hagen AMV's (1080p, h264).mp4", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
       { name: "Anime Title 6", image: "", video: "", secondary: "" },
