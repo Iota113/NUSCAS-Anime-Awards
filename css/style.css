@@ -419,19 +419,37 @@ body {
   overflow: hidden;
 }
 
-.card-media img {
+/* Thumbnail image — always visible, sits behind video */
+.card-media .card-thumbnail {
   width: 100%; height: 100%;
   object-fit: cover;
   display: block;
-  transition: opacity 0.3s;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
 }
 
+.card-media .thumbnail-fallback {
+  width: 100%; height: 100%;
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--navy-mid), var(--navy-dark));
+}
+
+/* Video sits on top of thumbnail, hidden until playing */
 .card-media video {
   width: 100%; height: 100%;
   object-fit: cover;
-  display: none;
   position: absolute;
   inset: 0;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
 }
 
 .card-media .play-btn {
@@ -446,7 +464,7 @@ body {
   cursor: pointer;
   display: flex; align-items: center; justify-content: center;
   transition: transform 0.2s, background 0.2s;
-  z-index: 5;
+  z-index: 10;
 }
 .card-media .play-btn:hover {
   transform: scale(1.15);
@@ -474,7 +492,7 @@ body {
   opacity: 0;
   transition: opacity 0.2s;
   pointer-events: none;
-  z-index: 4;
+  z-index: 9;
   display: flex; align-items: flex-start; justify-content: flex-end;
   padding: 10px;
 }
@@ -747,8 +765,12 @@ body {
 /* ============================
    VIDEO PLAYING STATE
    ============================ */
-.card-media.playing img { opacity: 0; }
-.card-media.playing video { display: block; }
+/* When playing: video fades in over the thumbnail */
+.card-media.playing video {
+  opacity: 1;
+}
+/* Thumbnail stays underneath — always visible when not playing */
+
 .card-media .play-btn.playing::before { content: '⏸'; }
 .card-media .play-btn:not(.playing)::before { content: '▶'; }
 

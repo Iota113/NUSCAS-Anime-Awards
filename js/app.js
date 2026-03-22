@@ -7,7 +7,7 @@
 // ── CONFIG ───────────────────────────────────────────────────
 const CONFIG = {
   // Paste your Google Apps Script Web App URL here after setup
-  GOOGLE_SHEET_URL: "https://script.google.com/macros/s/AKfycbwg3jgtKIDJOmfCfMG0Bx39si5YzymSrCAoAXTuG3kYwkb-WsPsNPuk4BXR4X9HUTEm/exec",
+  GOOGLE_SHEET_URL: "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE",
 
   // Change this to prevent duplicate submissions
   // "localStorage" = one vote per browser (default)
@@ -88,13 +88,20 @@ function buildNomineeCard(cat, catIndex, nom, nomIndex, votedIndex) {
   const isSelected = votedIndex === nomIndex;
 
   // Media section
+  // Image always acts as the thumbnail/poster — always visible until video plays
   let mediaHTML = "";
   if (nom.image || nom.video) {
     mediaHTML = `
       <div class="card-media" id="media-${cat.id}-${nomIndex}">
-        ${nom.image ? `<img src="${nom.image}" alt="${nom.name}" loading="lazy" onerror="this.src=''; this.style.display='none'">` : ""}
-        ${nom.video ? `<video src="${nom.video}" loop muted playsinline preload="none"></video>` : ""}
-        ${nom.video ? `<button class="play-btn" onclick="toggleVideo(event, '${cat.id}', ${nomIndex})" title="Play/Pause clip"></button>` : ""}
+        ${nom.image
+          ? `<img class="card-thumbnail" src="${nom.image}" alt="${nom.name}" loading="lazy">`
+          : `<div class="no-media-placeholder thumbnail-fallback"><span class="placeholder-icon">🎬</span></div>`
+        }
+        ${nom.video
+          ? `<video src="${nom.video}" loop playsinline preload="none"></video>
+             <button class="play-btn" onclick="toggleVideo(event, '${cat.id}', ${nomIndex})" title="Play/Pause clip"></button>`
+          : ""
+        }
         <div class="card-overlay"><div class="card-check">✓</div></div>
       </div>`;
   } else {

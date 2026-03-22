@@ -30,8 +30,9 @@ const CATEGORIES = [
       { name: "Frieren: Beyond Journey's End", 
         image: "assets/images/egofm-trailer_frieren_c_01", 
         video: "assets/clips/Frieren Beyond Journey's End「AMV」- Still Here [4K-Edit] - Hagen AMV's (1080p, h264).mp4", 
-        secondary: "Madhouse" },
-      { name: "Anime Title 2", image: "", video: "", secondary: "" },
+        secondary: "Madhouse" 
+      },
+      { name: "Uma Musume: Cinderella Grey", image: "assets/images/uma", video: "", secondary: "" },
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
