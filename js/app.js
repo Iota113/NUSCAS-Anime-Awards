@@ -352,3 +352,16 @@ function showToast(message, isError = false) {
   toast.style.display = "flex";
   setTimeout(() => { toast.style.display = "none"; }, 4000);
 }
+
+async function testSheetConnection() {
+  const url = CONFIG.GOOGLE_SHEET_URL;
+  if (url === "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
+    alert("URL not set in CONFIG!"); return;
+  }
+  try {
+    const res = await fetch(url + "?action=ping");
+    alert("Fetch sent (no-cors mode means we can't read the response, but no error = likely working). Check your Sheet for a new row.");
+  } catch(err) {
+    alert("FAILED: " + err.message);
+  }
+}
