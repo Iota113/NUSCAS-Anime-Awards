@@ -19,12 +19,12 @@ const CONFIG = {
 
 // ── STATE ─────────────────────────────────────────────────────
 let currentVotes = {}; // { categoryId: nomineeIndex }
+let currentPage = 0;   // which category (0-indexed) is being shown
 
 // ── INIT ──────────────────────────────────────────────────────
 document.addEventListener("DOMContentLoaded", () => {
   loadVotesFromStorage();
-  renderAllCategories();
-  setupCategoryFilters();
+  renderPage(currentPage);
   updateProgressBar();
 
   // If already submitted, show modal immediately
@@ -32,7 +32,6 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("voted-modal").style.display = "flex";
   }
 
-  // Update total count
   document.getElementById("categories-total").textContent = CATEGORIES.length;
 });
 
@@ -49,46 +48,118 @@ function saveVotesToStorage() {
 }
 
 // ── RENDER ────────────────────────────────────────────────────
-function renderAllCategories() {
+function renderPage(pageIndex) {
+  // Clamp just in case
+  currentPage = Math.max(0, Math.min(pageIndex, CATEGORIES.length - 1));
+
   const container = document.getElementById("categories-container");
   container.innerHTML = "";
 
-  CATEGORIES.forEach((cat, catIndex) => {
-    const section = document.createElement("section");
-    section.className = "category-section";
-    section.id = `cat-${cat.id}`;
-    section.dataset.filter = cat.filter;
+    // ── Page navigation controls
+  const nav = document.createElement("div");
+  nav.className = "page-nav";
 
-    // Check if already voted for this category
-    const votedIndex = currentVotes[cat.id];
-    if (votedIndex !== undefined) section.classList.add("has-voted");
+  const isFirst = currentPage === 0;
+  const isLast  = currentPage === CATEGORIES.length - 1;
 
-    section.innerHTML = `
-      <div class="category-header">
-        <div class="category-number">${String(catIndex + 1).padStart(2, "0")}</div>
-        <div class="category-title-wrap">
-          <div class="category-tag">${cat.tag}</div>
-          <h2 class="category-name">${cat.name}</h2>
-          ${cat.description ? `<p class="category-description">${cat.description}</p>` : ""}
-        </div>
-        <div class="voted-badge ${votedIndex !== undefined ? "visible" : ""}" id="badge-${cat.id}">
-          ✓ Voted
-        </div>
+  nav.innerHTML = `
+    <button class="btn-page btn-prev" onclick="goToPage(${currentPage - 1})" ${isFirst ? "disabled" : ""}>
+      ← Previous
+    </button>
+
+    <div class="page-nav-info">
+      <span class="page-counter">${currentPage + 1} / ${CATEGORIES.length}</span>
+      
+      <div class="page-dots">${buildPageDots()}</div>
+
+      <div class="custom-mobile-dropdown" id="category-dropdown">
+        <button class="dropdown-btn" onclick="toggleMobileDropdown(event)">
+          <span class="dropdown-text">
+            ${currentPage + 1}. ${CATEGORIES[currentPage].name}
+          </span>
+          <span class="dropdown-icon">▼</span>
+        </button>
+        <ul class="dropdown-list" id="dropdown-list">
+          ${CATEGORIES.map((cat, i) => {
+            const isVoted = currentVotes[cat.id] !== undefined;
+            const isActive = i === currentPage;
+            return `
+              <li class="dropdown-item ${isActive ? 'active' : ''}" onclick="selectFromDropdown(${i})">
+                <span class="item-name">${i + 1}. ${cat.name}</span>
+                ${isVoted ? '<span class="item-voted">✓</span>' : ''}
+              </li>
+            `;
+          }).join("")}
+        </ul>
       </div>
-      <div class="nominees-grid" id="grid-${cat.id}">
-        ${cat.nominees.map((nom, nomIndex) => buildNomineeCard(cat, catIndex, nom, nomIndex, votedIndex)).join("")}
-      </div>
-    `;
+    </div>
 
-    container.appendChild(section);
+    ${isLast
+      ? `<button class="btn-page btn-submit-nav" onclick="submitAllVotes()">🏆 Submit Votes</button>`
+      : `<button class="btn-page btn-next" onclick="goToPage(${currentPage + 1})">Next →</button>`
+    }
+  `;
+
+  container.appendChild(nav);
+
+  const cat = CATEGORIES[currentPage];
+  const votedIndex = currentVotes[cat.id];
+
+  // ── Category section
+  const section = document.createElement("section");
+  section.className = "category-section" + (votedIndex !== undefined ? " has-voted" : "");
+  section.id = `cat-${cat.id}`;
+  section.dataset.filter = cat.filter;
+
+  section.innerHTML = `
+    <div class="category-header">
+      <div class="category-number">${String(currentPage + 1).padStart(2, "0")}</div>
+      <div class="category-title-wrap">
+        <div class="category-tag">${cat.tag}</div>
+        <h2 class="category-name">${cat.name}</h2>
+        ${cat.description ? `<p class="category-description">${cat.description}</p>` : ""}
+      </div>
+      <div class="voted-badge ${votedIndex !== undefined ? "visible" : ""}" id="badge-${cat.id}">
+        ✓ Voted
+      </div>
+    </div>
+    <div class="nominees-grid" id="grid-${cat.id}">
+      ${cat.nominees.map((nom, nomIndex) =>
+        buildNomineeCard(cat, currentPage, nom, nomIndex, votedIndex)
+      ).join("")}
+    </div>
+  `;
+  container.appendChild(section);
+
+
+  // Scroll to top of main content smoothly, accounting for fixed header
+  const mainContent = document.getElementById("main-content");
+  const isMobile = window.innerWidth <= 768;
+  const headerOffset = isMobile ? 90 : 20;
+  const elementPosition = mainContent.getBoundingClientRect().top;
+  const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+  window.scrollTo({
+    top: offsetPosition,
+    behavior: "smooth"
   });
+}
+
+// Builds a compact row of dots — one per category, filled if voted
+function buildPageDots() {
+  return CATEGORIES.map((cat, i) => {
+    const voted   = currentVotes[cat.id] !== undefined;
+    const active  = i === currentPage;
+    let cls = "page-dot";
+    if (active) cls += " active";
+    if (voted)  cls += " voted";
+    return `<span class="${cls}" title="${cat.name}" onclick="goToPage(${i})"></span>`;
+  }).join("");
 }
 
 function buildNomineeCard(cat, catIndex, nom, nomIndex, votedIndex) {
   const isSelected = votedIndex === nomIndex;
 
-  // Media section
-  // Image always acts as the thumbnail/poster — always visible until video plays
   let mediaHTML = "";
   if (nom.image || nom.video) {
     mediaHTML = `
@@ -131,9 +202,19 @@ function buildNomineeCard(cat, catIndex, nom, nomIndex, votedIndex) {
     </div>`;
 }
 
+// ── NAVIGATION ────────────────────────────────────────────────
+function goToPage(index) {
+  if (index < 0 || index >= CATEGORIES.length) return;
+  
+  // Add a tiny 150ms delay so the user can see the CSS button animation
+  setTimeout(() => {
+    renderPage(index);
+    updateProgressBar();
+  }, 100);
+}
+
 // ── VOTING LOGIC ──────────────────────────────────────────────
 function selectNominee(categoryId, nomineeIndex) {
-  // Already submitted — block further voting
   if (localStorage.getItem(CONFIG.VOTE_LOCK_KEY)) {
     document.getElementById("voted-modal").style.display = "flex";
     return;
@@ -141,19 +222,14 @@ function selectNominee(categoryId, nomineeIndex) {
 
   const prevIndex = currentVotes[categoryId];
 
-  // Deselect if clicking same card
   if (prevIndex === nomineeIndex) {
+    // Deselect
     delete currentVotes[categoryId];
     updateCardUI(categoryId, nomineeIndex, false);
-    // Remove has-voted
     document.getElementById(`cat-${categoryId}`).classList.remove("has-voted");
     document.getElementById(`badge-${categoryId}`).classList.remove("visible");
   } else {
-    // Deselect previous
-    if (prevIndex !== undefined) {
-      updateCardUI(categoryId, prevIndex, false);
-    }
-    // Select new
+    if (prevIndex !== undefined) updateCardUI(categoryId, prevIndex, false);
     currentVotes[categoryId] = nomineeIndex;
     updateCardUI(categoryId, nomineeIndex, true);
     document.getElementById(`cat-${categoryId}`).classList.add("has-voted");
@@ -162,12 +238,15 @@ function selectNominee(categoryId, nomineeIndex) {
 
   saveVotesToStorage();
   updateProgressBar();
+
+  // Refresh the dot row so the current dot lights up as voted immediately
+  const dotsEl = document.querySelector(".page-dots");
+  if (dotsEl) dotsEl.innerHTML = buildPageDots();
 }
 
 function updateCardUI(categoryId, nomineeIndex, selected) {
   const card = document.getElementById(`card-${categoryId}-${nomineeIndex}`);
   if (!card) return;
-
   const btn = card.querySelector(".card-vote-btn");
   if (selected) {
     card.classList.add("selected");
@@ -182,7 +261,7 @@ function updateCardUI(categoryId, nomineeIndex, selected) {
 function updateProgressBar() {
   const total = CATEGORIES.length;
   const voted = Object.keys(currentVotes).length;
-  const pct = (voted / total) * 100;
+  const pct   = (voted / total) * 100;
 
   document.getElementById("categories-voted").textContent = voted;
   document.getElementById("categories-total").textContent = total;
@@ -196,7 +275,7 @@ function toggleVideo(e, categoryId, nomineeIndex) {
   if (!mediaEl) return;
 
   const video = mediaEl.querySelector("video");
-  const btn = mediaEl.querySelector(".play-btn");
+  const btn   = mediaEl.querySelector(".play-btn");
   if (!video) return;
 
   if (mediaEl.classList.contains("playing")) {
@@ -204,7 +283,6 @@ function toggleVideo(e, categoryId, nomineeIndex) {
     mediaEl.classList.remove("playing");
     btn.classList.remove("playing");
   } else {
-    // Pause all other videos first
     document.querySelectorAll(".card-media.playing").forEach(el => {
       el.querySelector("video")?.pause();
       el.classList.remove("playing");
@@ -216,25 +294,6 @@ function toggleVideo(e, categoryId, nomineeIndex) {
   }
 }
 
-// ── CATEGORY FILTER ───────────────────────────────────────────
-function setupCategoryFilters() {
-  document.querySelectorAll(".cat-filter").forEach(btn => {
-    btn.addEventListener("click", () => {
-      document.querySelectorAll(".cat-filter").forEach(b => b.classList.remove("active"));
-      btn.classList.add("active");
-
-      const filter = btn.dataset.filter;
-      document.querySelectorAll(".category-section").forEach(sec => {
-        if (filter === "all" || sec.dataset.filter === filter) {
-          sec.classList.remove("hidden");
-        } else {
-          sec.classList.add("hidden");
-        }
-      });
-    });
-  });
-}
-
 // ── SUBMIT FLOW ───────────────────────────────────────────────
 function submitAllVotes() {
   if (localStorage.getItem(CONFIG.VOTE_LOCK_KEY)) {
@@ -242,9 +301,8 @@ function submitAllVotes() {
     return;
   }
 
-  // Build summary
-  const summaryEl = document.getElementById("modal-vote-summary");
-  const unvotedEl = document.getElementById("modal-unvoted");
+  const summaryEl     = document.getElementById("modal-vote-summary");
+  const unvotedEl     = document.getElementById("modal-unvoted");
   const unvotedTextEl = document.getElementById("unvoted-text");
 
   let summaryHTML = "";
@@ -281,10 +339,6 @@ function submitAllVotes() {
   document.getElementById("submit-modal").style.display = "flex";
 }
 
-function closeModal() {
-  document.getElementById("submit-modal").style.display = "none";
-}
-
 async function confirmSubmit() {
   const btn = document.getElementById("confirm-submit-btn");
   btn.innerHTML = "<span>Submitting... ⏳</span>";
@@ -292,12 +346,10 @@ async function confirmSubmit() {
 
   try {
     await sendToGoogleSheets();
-    // Lock voting
     localStorage.setItem(CONFIG.VOTE_LOCK_KEY, Date.now().toString());
     closeModal();
     showToast("🎉 Votes submitted! Results revealed at the ceremony.");
 
-    // Disable all cards visually
     document.querySelectorAll(".nominee-card:not(.selected)").forEach(c => {
       c.style.opacity = "0.4";
       c.style.pointerEvents = "none";
@@ -313,13 +365,11 @@ async function confirmSubmit() {
 // ── GOOGLE SHEETS INTEGRATION ─────────────────────────────────
 async function sendToGoogleSheets() {
   if (CONFIG.GOOGLE_SHEET_URL === "YOUR_GOOGLE_APPS_SCRIPT_URL_HERE") {
-    // Dev mode: just simulate a delay
     await new Promise(r => setTimeout(r, 800));
     console.log("DEV MODE — votes not actually sent:", currentVotes);
     return;
   }
 
-  // Build payload: array of { category, nominee }
   const payload = CATEGORIES.map(cat => {
     const votedIndex = currentVotes[cat.id];
     return {
@@ -328,27 +378,25 @@ async function sendToGoogleSheets() {
     };
   });
 
-  const response = await fetch(CONFIG.GOOGLE_SHEET_URL, {
+  await fetch(CONFIG.GOOGLE_SHEET_URL, {
     method: "POST",
-    mode: "no-cors", // Google Apps Script requires no-cors
+    mode: "no-cors",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
       timestamp: new Date().toISOString(),
       votes: payload,
     }),
   });
-
-  // no-cors means we can't read the response, but if no error thrown it succeeded
 }
 
 // ── TOAST ─────────────────────────────────────────────────────
 function showToast(message, isError = false) {
   const toast = document.getElementById("toast");
-  const msg = document.getElementById("toast-msg");
+  const msg   = document.getElementById("toast-msg");
   msg.textContent = message;
-  toast.style.background = isError ? "#3d1a1a" : "#1e3d25";
-  toast.style.borderColor = isError ? "#e03b3b" : "#3db87a";
-  toast.style.color = isError ? "#e03b3b" : "#3db87a";
+  toast.style.background   = isError ? "#3d1a1a" : "#1e3d25";
+  toast.style.borderColor  = isError ? "#e03b3b" : "#3db87a";
+  toast.style.color        = isError ? "#e03b3b" : "#3db87a";
   toast.style.display = "flex";
   setTimeout(() => { toast.style.display = "none"; }, 4000);
 }
@@ -359,9 +407,64 @@ async function testSheetConnection() {
     alert("URL not set in CONFIG!"); return;
   }
   try {
-    const res = await fetch(url + "?action=ping");
+    await fetch(url + "?action=ping");
     alert("Fetch sent (no-cors mode means we can't read the response, but no error = likely working). Check your Sheet for a new row.");
   } catch(err) {
     alert("FAILED: " + err.message);
   }
 }
+
+// Modal
+function closeModal() {
+  const modal = document.getElementById("submit-modal");
+  
+  // 1. Add the CSS class to start the fadeOut/slideDown animations
+  modal.classList.add("closing");
+
+  // 2. Wait for the CSS animation to finish (200ms)
+  setTimeout(() => {
+    modal.style.display = "none";
+    modal.classList.remove("closing"); // Reset for the next time it opens
+  }, 200);
+}
+
+// 3. The "Click Outside" Trigger
+window.addEventListener("click", (event) => {
+  const modal = document.getElementById("submit-modal");
+  // If the user clicks the dark overlay specifically (not the box inside)
+  if (event.target === modal) {
+    closeModal();
+  }
+
+  const dropdownList = document.getElementById("dropdown-list");
+  if (dropdownList && dropdownList.classList.contains("show")) {
+    const isClickInside = event.target.closest('.custom-mobile-dropdown');
+    if (!isClickInside) {
+      dropdownList.classList.remove("show");
+    }
+  }
+});
+
+// Dropdown
+function toggleMobileDropdown(e) {
+  e.stopPropagation(); // Prevent the window click listener from immediately closing it
+  const list = document.getElementById("dropdown-list");
+  list.classList.toggle("show");
+}
+
+function selectFromDropdown(index) {
+  const list = document.getElementById("dropdown-list");
+  list.classList.remove("show"); // Close menu
+  goToPage(index); // Navigate
+}
+
+// ── DYNAMIC HEADER SCROLL ─────────────────────────────────────
+window.addEventListener("scroll", () => {
+  const header = document.querySelector(".site-header");
+  
+  if (window.scrollY > 80) {
+    header.classList.add("compact");
+  } else {
+    header.classList.remove("compact");
+  }
+});
