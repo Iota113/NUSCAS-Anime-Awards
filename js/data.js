@@ -6,39 +6,10 @@
 //    image: "path/to/image.jpg"  OR  "" for placeholder
 //    video: "path/to/clip.mp4"   OR  "" for no video
 //    secondary: "e.g. Character name or studio" (optional)
-
-// Example:
-// {
-// name: "Frieren: Beyond Journey's End",
-// image: "assets/images/frieren.jpg",    ← path to image file
-// video: "assets/clips/frieren.mp4",     ← path to video clip (or "" for none)
-// secondary: "Madhouse"                  ← studio / character / artist info
-// }
-// Images: save to assets/images/ folder
-// Videos: save to assets/clips/ folder (keep clips short: 15–30 seconds)
 // ============================================================
 
 const CATEGORIES = [
   // ── GENERAL ─────────────────────────────────────────────
-  {
-    id: "best-anime",
-    tag: "General",
-    filter: "general",
-    name: "Best Anime",
-    description: "The greatest anime of all time, voted by you.",
-    nominees: [
-      { name: "Frieren: Beyond Journey's End", 
-        image: "assets/images/egofm-trailer_frieren_c_01.jpg", 
-        video: "assets/clips/Frieren Beyond Journey's End「AMV」- Still Here [4K-Edit] - Hagen AMV's (1080p, h264).mp4", 
-        secondary: "Madhouse" 
-      },
-      { name: "Uma Musume: Cinderella Grey", image: "assets/images/uma.jpg", video: "", secondary: "" },
-      { name: "Anime Title 3", image: "", video: "assets/clips/Frieren Beyond Journey's End「AMV」- Still Here [4K-Edit] - Hagen AMV's (1080p, h264).mp4", secondary: "" },
-      { name: "Anime Title 4", image: "", video: "", secondary: "" },
-      { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
-    ]
-  },
   {
     id: "anime-of-the-year",
     tag: "General",
@@ -51,14 +22,31 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
   {
-    id: "best-film",
+    id: "best-anime",
     tag: "General",
     filter: "general",
-    name: "Best Film",
+    name: "Best Anime of All Time",
+    description: "The greatest anime of all time, voted by you.",
+    nominees: [
+      { name: "Frieren: Beyond Journey's End", 
+        image: "assets/images/egofm-trailer_frieren_c_01.jpg", 
+        video: "assets/clips/Frieren Beyond Journey's End「AMV」- Still Here [4K-Edit] - Hagen AMV's (1080p, h264).mp4", 
+        secondary: "Madhouse" 
+      },
+      { name: "Uma Musume: Cinderella Grey", image: "assets/images/uma.jpg", video: "", secondary: "" },
+      { name: "Anime Title 3", image: "", video: "", secondary: "" },
+      { name: "Anime Title 4", image: "", video: "", secondary: "" },
+      { name: "Anime Title 5", image: "", video: "", secondary: "" },
+    ]
+  },
+    {
+    id: "film-of-the-year",
+    tag: "General",
+    filter: "general",
+    name: "Film of the Year (2025)",
     description: "The best theatrical anime film.",
     nominees: [
       { name: "Film Title 1", image: "", video: "", secondary: "" },
@@ -66,7 +54,20 @@ const CATEGORIES = [
       { name: "Film Title 3", image: "", video: "", secondary: "" },
       { name: "Film Title 4", image: "", video: "", secondary: "" },
       { name: "Film Title 5", image: "", video: "", secondary: "" },
-      { name: "Film Title 6", image: "", video: "", secondary: "" },
+    ]
+  },
+  {
+    id: "best-film",
+    tag: "General",
+    filter: "general",
+    name: "Best Film of All Time",
+    description: "The best theatrical anime film.",
+    nominees: [
+      { name: "Film Title 1", image: "", video: "", secondary: "" },
+      { name: "Film Title 2", image: "", video: "", secondary: "" },
+      { name: "Film Title 3", image: "", video: "", secondary: "" },
+      { name: "Film Title 4", image: "", video: "", secondary: "" },
+      { name: "Film Title 5", image: "", video: "", secondary: "" },
     ]
   },
   {
@@ -81,7 +82,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
   {
@@ -96,7 +96,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
   {
@@ -111,7 +110,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
 
@@ -128,7 +126,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
   {
@@ -143,7 +140,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
   {
@@ -158,7 +154,6 @@ const CATEGORIES = [
       { name: "Director Name 3", image: "", video: "", secondary: "Series / Film" },
       { name: "Director Name 4", image: "", video: "", secondary: "Series / Film" },
       { name: "Director Name 5", image: "", video: "", secondary: "Series / Film" },
-      { name: "Director Name 6", image: "", video: "", secondary: "Series / Film" },
     ]
   },
   {
@@ -173,7 +168,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
 
@@ -190,7 +184,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
   {
@@ -205,7 +198,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
   {
@@ -220,7 +212,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
   {
@@ -235,7 +226,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
   {
@@ -250,7 +240,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
     ]
   },
   {
@@ -265,7 +254,118 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "" },
       { name: "Anime Title 4", image: "", video: "", secondary: "" },
       { name: "Anime Title 5", image: "", video: "", secondary: "" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "" },
+    ]
+  },
+  {
+    id: "best-chinese-anime",
+    tag: "Genre",
+    filter: "genre",
+    name: "Best Chinese Anime",
+    description: "The most outstanding animation originating from China.",
+    nominees: [
+      { name: "Anime Title 1", image: "", video: "", secondary: "" },
+      { name: "Anime Title 2", image: "", video: "", secondary: "" },
+      { name: "Anime Title 3", image: "", video: "", secondary: "" },
+      { name: "Anime Title 4", image: "", video: "", secondary: "" },
+      { name: "Anime Title 5", image: "", video: "", secondary: "" },
+    ]
+  },
+  {
+    id: "best-mystery",
+    tag: "Genre",
+    filter: "genre",
+    name: "Best Mystery",
+    description: "The most intriguing and suspenseful anime that kept you guessing.",
+    nominees: [
+      { name: "Anime Title 1", image: "", video: "", secondary: "" },
+      { name: "Anime Title 2", image: "", video: "", secondary: "" },
+      { name: "Anime Title 3", image: "", video: "", secondary: "" },
+      { name: "Anime Title 4", image: "", video: "", secondary: "" },
+      { name: "Anime Title 5", image: "", video: "", secondary: "" },
+    ]
+  },
+  {
+    id: "best-sci-fi",
+    tag: "Genre",
+    filter: "genre",
+    name: "Best Sci-Fi",
+    description: "The most imaginative and thought-provoking science fiction anime.",
+    nominees: [
+      { name: "Anime Title 1", image: "", video: "", secondary: "" },
+      { name: "Anime Title 2", image: "", video: "", secondary: "" },
+      { name: "Anime Title 3", image: "", video: "", secondary: "" },
+      { name: "Anime Title 4", image: "", video: "", secondary: "" },
+      { name: "Anime Title 5", image: "", video: "", secondary: "" },
+    ]
+  },
+  {
+    id: "best-horror",
+    tag: "Genre",
+    filter: "genre",
+    name: "Best Horror",
+    description: "The most terrifying and spine-chilling anime of the year.",
+    nominees: [
+      { name: "Anime Title 1", image: "", video: "", secondary: "" },
+      { name: "Anime Title 2", image: "", video: "", secondary: "" },
+      { name: "Anime Title 3", image: "", video: "", secondary: "" },
+      { name: "Anime Title 4", image: "", video: "", secondary: "" },
+      { name: "Anime Title 5", image: "", video: "", secondary: "" },
+    ]
+  },
+  {
+    id: "best-thriller",
+    tag: "Genre",
+    filter: "genre",
+    name: "Best Thriller",
+    description: "The most intense and edge-of-your-seat anime experience.",
+    nominees: [
+      { name: "Anime Title 1", image: "", video: "", secondary: "" },
+      { name: "Anime Title 2", image: "", video: "", secondary: "" },
+      { name: "Anime Title 3", image: "", video: "", secondary: "" },
+      { name: "Anime Title 4", image: "", video: "", secondary: "" },
+      { name: "Anime Title 5", image: "", video: "", secondary: "" },
+    ]
+  },
+  {
+    id: "best-sports",
+    tag: "Genre",
+    filter: "genre",
+    name: "Best Sports",
+    description: "The most inspiring, competitive, and action-packed sports anime.",
+    nominees: [
+      { name: "Anime Title 1", image: "", video: "", secondary: "" },
+      { name: "Anime Title 2", image: "", video: "", secondary: "" },
+      { name: "Anime Title 3", image: "", video: "", secondary: "" },
+      { name: "Anime Title 4", image: "", video: "", secondary: "" },
+      { name: "Anime Title 5", image: "", video: "", secondary: "" },
+    ]
+  },
+  {
+    id: "best-mecha",
+    tag: "Genre",
+    filter: "genre",
+    name: "Best Mecha",
+    description: "The most spectacular and gripping anime featuring giant robots.",
+    nominees: [
+      { name: "Anime Title 1", image: "", video: "", secondary: "" },
+      { name: "Anime Title 2", image: "", video: "", secondary: "" },
+      { name: "Anime Title 3", image: "", video: "", secondary: "" },
+      { name: "Anime Title 4", image: "", video: "", secondary: "" },
+      { name: "Anime Title 5", image: "", video: "", secondary: "" },
+    ]
+  },
+  {
+    id: "best-music-idol",
+    tag: "Genre",
+    filter: "genre",
+    name: "Best Music / Idol",
+    description: "The most captivating anime centered around music, performances, and idols.",
+    nominees: [
+      { name: "Anime Title 1", image: "", video: "", secondary: "" },
+      { name: "Anime Title 2", image: "", video: "", secondary: "" },
+      { name: "Anime Title 3", image: "", video: "", secondary: "" },
+      { name: "Anime Title 4", image: "", video: "", secondary: "" },
+      { name: "Anime Title 5", image: "", video: "", secondary: "" },
     ]
   },
   {
@@ -402,7 +502,6 @@ const CATEGORIES = [
       { name: "Character Name 3", image: "", video: "", secondary: "Anime Title" },
       { name: "Character Name 4", image: "", video: "", secondary: "Anime Title" },
       { name: "Character Name 5", image: "", video: "", secondary: "Anime Title" },
-      { name: "Character Name 6", image: "", video: "", secondary: "Anime Title" },
     ]
   },
   {
@@ -417,7 +516,6 @@ const CATEGORIES = [
       { name: "Character Name 3", image: "", video: "", secondary: "Anime Title" },
       { name: "Character Name 4", image: "", video: "", secondary: "Anime Title" },
       { name: "Character Name 5", image: "", video: "", secondary: "Anime Title" },
-      { name: "Character Name 6", image: "", video: "", secondary: "Anime Title" },
     ]
   },
   {
@@ -431,8 +529,7 @@ const CATEGORIES = [
       { name: "Character Name 2", image: "", video: "", secondary: "Anime Title" },
       { name: "Character Name 3", image: "", video: "", secondary: "Anime Title" },
       { name: "Character Name 4", image: "", video: "", secondary: "Anime Title" },
-      { name: "Character Name 5", image: "", video: "", secondary: "Anime Title" },
-      { name: "Character Name 6", image: "", video: "", secondary: "Anime Title" },
+      { name: "Character Name 5", image: "", video: "Anime Title" },
     ]
   },
 
@@ -449,7 +546,6 @@ const CATEGORIES = [
       { name: "Song Title 3", image: "", video: "", secondary: "Artist · Anime Title" },
       { name: "Song Title 4", image: "", video: "", secondary: "Artist · Anime Title" },
       { name: "Song Title 5", image: "", video: "", secondary: "Artist · Anime Title" },
-      { name: "Song Title 6", image: "", video: "", secondary: "Artist · Anime Title" },
     ]
   },
   {
@@ -464,7 +560,6 @@ const CATEGORIES = [
       { name: "Anime Title 3", image: "", video: "", secondary: "Composer Name" },
       { name: "Anime Title 4", image: "", video: "", secondary: "Composer Name" },
       { name: "Anime Title 5", image: "", video: "", secondary: "Composer Name" },
-      { name: "Anime Title 6", image: "", video: "", secondary: "Composer Name" },
     ]
   },
   {
@@ -479,7 +574,6 @@ const CATEGORIES = [
       { name: "OP Title / Anime 3", image: "", video: "", secondary: "Artist" },
       { name: "OP Title / Anime 4", image: "", video: "", secondary: "Artist" },
       { name: "OP Title / Anime 5", image: "", video: "", secondary: "Artist" },
-      { name: "OP Title / Anime 6", image: "", video: "", secondary: "Artist" },
     ]
   },
   {
@@ -494,7 +588,6 @@ const CATEGORIES = [
       { name: "ED Title / Anime 3", image: "", video: "", secondary: "Artist" },
       { name: "ED Title / Anime 4", image: "", video: "", secondary: "Artist" },
       { name: "ED Title / Anime 5", image: "", video: "", secondary: "Artist" },
-      { name: "ED Title / Anime 6", image: "", video: "", secondary: "Artist" },
     ]
   },
   {
@@ -509,7 +602,6 @@ const CATEGORIES = [
       { name: "VA Name 3", image: "", video: "", secondary: "Character · Anime Title" },
       { name: "VA Name 4", image: "", video: "", secondary: "Character · Anime Title" },
       { name: "VA Name 5", image: "", video: "", secondary: "Character · Anime Title" },
-      { name: "VA Name 6", image: "", video: "", secondary: "Character · Anime Title" },
     ]
   },
   {
@@ -524,7 +616,6 @@ const CATEGORIES = [
       { name: "VA Name 3", image: "", video: "", secondary: "Character · Anime Title" },
       { name: "VA Name 4", image: "", video: "", secondary: "Character · Anime Title" },
       { name: "VA Name 5", image: "", video: "", secondary: "Character · Anime Title" },
-      { name: "VA Name 6", image: "", video: "", secondary: "Character · Anime Title" },
     ]
   },
 ];

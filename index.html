@@ -22,7 +22,7 @@
     </div>
     <div class="header-inner">
       <div class="logo-wrap">
-        <img src="assets/logo.png" alt="NUS CAS Logo" class="site-logo" onerror="this.style.display='none'">
+        <img src="assets/logo-Photoroom.png" alt="NUS CAS Logo" class="site-logo" onerror="this.style.display='none'">
       </div>
       <div class="header-title-block">
         <p class="header-eyebrow"><span class="jp-text">第1回</span> 1st Annual</p>
@@ -50,25 +50,6 @@
     </div>
   </header>
 
-  <!-- ANNOUNCEMENT BANNER -->
-  <div class="announcement-banner" id="announcement-banner">
-    <span class="announce-icon">📢</span>
-    <span id="announce-text">Voting is now open! Select your favourite nominee in each category below.</span>
-    <button class="announce-close" onclick="document.getElementById('announcement-banner').style.display='none'">✕</button>
-  </div>
-
-  <!-- CATEGORY FILTER NAV -->
-  <nav class="category-nav" id="category-nav">
-    <div class="category-nav-inner">
-      <button class="cat-filter active" data-filter="all">All</button>
-      <button class="cat-filter" data-filter="general">General</button>
-      <button class="cat-filter" data-filter="craft">Craft</button>
-      <button class="cat-filter" data-filter="genre">Genre</button>
-      <button class="cat-filter" data-filter="character">Character</button>
-      <button class="cat-filter" data-filter="music">Music & Audio</button>
-    </div>
-  </nav>
-
   <!-- MAIN CONTENT -->
   <main class="main-content" id="main-content">
     <div class="categories-container" id="categories-container">
@@ -77,15 +58,16 @@
   </main>
 
   <!-- SUBMISSION MODAL -->
-  <div class="modal-overlay" id="submit-modal" style="display:none">
+<div class="modal-overlay" id="submit-modal" style="display:none">
     <div class="modal-box">
+      <button class="modal-close-x" onclick="closeModal()" aria-label="Close modal">&times;</button>
+      
       <div class="modal-header">
         <span class="modal-icon">🎌</span>
         <h2>Confirm Your Votes</h2>
       </div>
       <div class="modal-body" id="modal-vote-summary">
-        <!-- summary injected by JS -->
-      </div>
+        </div>
       <div class="modal-unvoted-warning" id="modal-unvoted" style="display:none">
         <span>⚠️</span> <span id="unvoted-text"></span>
       </div>
@@ -116,14 +98,14 @@
   </div>
 
   <footer class="site-footer">
-    <div class="footer-inner">
-      <img src="assets/logo.png" alt="NUS CAS" class="footer-logo" onerror="this.style.display='none'">
-      <div class="footer-text">
-        <p class="footer-name">NUS Comics &amp; Animation Society</p>
-        <p class="footer-sub">CASuals Anime Awards &nbsp;·&nbsp; All rights reserved</p>
-      </div>
+  <div class="footer-inner">
+    <img src="assets/logo-Photoroom.png" alt="NUSCAS Logo" class="footer-logo">
+    <div class="footer-text-wrap">
+      <div class="footer-name">NUS Comics & Animation Society</div>
+      <div class="footer-sub">CASuals Anime Awards &nbsp;·&nbsp; All rights reserved</div>
     </div>
-  </footer>
+  </div>
+</footer>
 
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
