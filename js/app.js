@@ -133,18 +133,30 @@ function renderPage(pageIndex) {
   `;
   container.appendChild(section);
 
+  // ─── UPDATED FLUSH AUTO-SCROLL ───
+  
+  // 1. Get the current height of the header
+  const header = document.querySelector('.site-header');
+  const headerHeight = header ? header.offsetHeight : 0;
 
-  // Scroll to top of main content smoothly, accounting for fixed header
-  const mainContent = document.getElementById("main-content");
-  const isMobile = window.innerWidth <= 768;
-  const headerOffset = isMobile ? 90 : 20;
-  const elementPosition = mainContent.getBoundingClientRect().top;
-  const offsetPosition = elementPosition + window.scrollY - headerOffset;
+  // 2. We use a small timeout to let the new category content render 
+  // so the browser knows exactly where the .page-nav is located
+  setTimeout(() => {
+    const navElement = document.querySelector('.page-nav');
+    if (navElement) {
+      // Get the position of the nav element relative to the viewport
+      const rect = navElement.getBoundingClientRect();
+      
+      // Calculate the final scroll position:
+      // (Current Scroll) + (Nav distance from top) - (Header height)
+      const offsetPosition = window.pageYOffset + rect.top - headerHeight - 25;
 
-  window.scrollTo({
-    top: offsetPosition,
-    behavior: "smooth"
-  });
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth"
+      });
+    }
+  }, 50); // 50ms is usually enough for a smooth calculation
 }
 
 // Builds a compact row of dots — one per category, filled if voted
