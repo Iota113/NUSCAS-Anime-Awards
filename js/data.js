@@ -435,7 +435,7 @@ const CATEGORIES = [
       { name: "Anytime Anywhere - milet", image: "assets/images/compressed/frieren.webp", video: "", secondary: "Frieren: Beyond Journey's End" },
       { name: "Departures - EGOIST", image: "assets/images/compressed/departures.webp", video: "", secondary: "Guilty Crown" },
       { name: "Hare no Hi ni - Reira Ushio", image: "assets/images/compressed/fragrant_ending.webp", video: "", secondary: "The Fragrant Flower Blooms with Dignity" },
-      { name: "The 1", image: "assets/images/compressed/the_1.webp", video: "", secondary: "One Piece" },
+      { name: "The 1 - muque", image: "assets/images/compressed/the_1.webp", video: "", secondary: "One Piece" },
       { name: "Ray of Light - Shoko Nakagawa", image: "assets/images/compressed/fmab_ed5.webp", video: "", secondary: "Fullmetal Alchemist: Brotherhood" },
     ]
   },
