@@ -274,7 +274,7 @@ function toggleVideo(e, categoryId, nomineeIndex) {
   if (!mediaEl) return;
 
   const video = mediaEl.querySelector("video");
-  const btn   = mediaEl.querySelector(".play-btn");
+  const btn = mediaEl.querySelector(".play-btn");
   if (!video) return;
 
   if (mediaEl.classList.contains("playing")) {
@@ -282,11 +282,25 @@ function toggleVideo(e, categoryId, nomineeIndex) {
     mediaEl.classList.remove("playing");
     btn.classList.remove("playing");
   } else {
+    // Pause any other playing videos first
     document.querySelectorAll(".card-media.playing").forEach(el => {
       el.querySelector("video")?.pause();
       el.classList.remove("playing");
       el.querySelector(".play-btn")?.classList.remove("playing");
     });
+
+    // --- NEW LOGIC START ---
+    // Find the category and nominee data to check for a custom start time
+    const cat = CATEGORIES.find(c => c.id === categoryId);
+    const nominee = cat?.nominees[nomineeIndex];
+    
+    // Only set currentTime if the video is at the very beginning (0)
+    // and a custom startTime exists.
+    if (video.currentTime === 0 && nominee && nominee.startTime) {
+      video.currentTime = nominee.startTime;
+    }
+    // --- NEW LOGIC END ---
+
     video.play();
     mediaEl.classList.add("playing");
     btn.classList.add("playing");
