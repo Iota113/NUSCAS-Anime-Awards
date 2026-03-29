@@ -227,7 +227,7 @@ body {
 .jp-text { margin-right: 8px; }
 
 .site-title {
-  font-family: 'Bangers', cursive;
+  font-family: 'Noto Sans JP', cursive;
   letter-spacing: 0.04em;
   line-height: 1;
   margin-bottom: 8px;
@@ -311,7 +311,7 @@ body {
   border: none;
   padding: 14px 28px;
   border-radius: 50px;
-  font-family: 'Bangers', cursive;
+  font-family: 'Nunito', cursive;
   font-size: 20px;
   letter-spacing: 0.05em;
   cursor: pointer;
@@ -324,8 +324,8 @@ body {
 }
 
 .btn-submit-all:hover {
-  transform: translateY(-2px) scale(1.03);
-  box-shadow: 0 8px 28px rgba(245,134,31,0.55);
+  transform: scale(0.95);
+  filter: brightness(1.15);
 }
 
 /* ============================
@@ -418,7 +418,7 @@ body {
 }
 
 .category-number {
-  font-family: 'Bangers', cursive;
+  font-family: 'Nunito', cursive;
   font-size: 36px;
   color: var(--orange);
   opacity: 0.4;
@@ -443,7 +443,7 @@ body {
 }
 
 .category-name {
-  font-family: 'Bangers', cursive;
+  font-family: 'Nunito', cursive;
   font-size: clamp(22px, 4vw, 32px);
   letter-spacing: 0.04em;
   color: var(--white);
@@ -797,7 +797,7 @@ body {
 }
 .modal-icon { font-size: 32px; }
 .modal-header h2 {
-  font-family: 'Bangers', cursive;
+  font-family: 'Nunito', cursive;
   font-size: 28px;
   letter-spacing: 0.04em;
 }
@@ -874,7 +874,7 @@ body {
   border: none;
   background: linear-gradient(135deg, var(--orange), var(--orange-dark));
   color: white;
-  font-family: 'Bangers', cursive;
+  font-family: 'Nunito', cursive;
   font-size: 20px;
   letter-spacing: 0.05em;
   cursor: pointer;
@@ -886,7 +886,7 @@ body {
 .voted-modal-box { text-align: center; }
 .voted-icon { font-size: 64px; margin-bottom: 16px; }
 .voted-modal-box h2 {
-  font-family: 'Bangers', cursive;
+  font-family: 'Nunito', cursive;
   font-size: 32px;
   letter-spacing: 0.04em;
   margin-bottom: 12px;
