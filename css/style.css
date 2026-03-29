@@ -34,11 +34,11 @@ body {
   color: var(--white);
   min-height: 100vh;
   overflow-x: hidden;
-  padding-top: 240px;
+  padding-top: 280px;
 }
 
 @media (max-width: 600px) {
-  body { padding-top: 340px; }
+  body { padding-top: 380px; }
 }
 
 /* ============================
@@ -183,7 +183,7 @@ body {
 }
 
 .category-nav {
-  top: 66px; /* Adjust this by a few px if it overlaps the thin header */
+  top: 85px; /* Adjust this by a few px if it overlaps the thin header */
 }
 
 .header-bg-effects {

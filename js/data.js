@@ -468,7 +468,7 @@ const CATEGORIES = [
         video: "assets/clips/GuiltyCrown_Departures.mp4", secondary: "Guilty Crown" },
       { name: "Hare no Hi ni - Reira Ushio", image: "assets/images/compressed/fragrant_ending.webp", 
         video: "assets/clips/FragrantFlower_ED.mp4", secondary: "The Fragrant Flower Blooms with Dignity" },
-      { name: "The 1", image: "assets/images/compressed/the_1.webp", 
+      { name: "The 1 - Muque", image: "assets/images/compressed/the_1.webp", 
         video: "assets/clips/OnePiece_ED21.mp4", secondary: "One Piece" },
       { name: "Ray of Light - Shoko Nakagawa", image: "assets/images/compressed/fmab_ed5.webp", 
         video: "assets/clips/FMAB_ED5.mp4", secondary: "Fullmetal Alchemist: Brotherhood" },

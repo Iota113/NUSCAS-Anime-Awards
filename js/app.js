@@ -137,7 +137,7 @@ function renderPage(pageIndex) {
   // Scroll to top of main content smoothly, accounting for fixed header
   const mainContent = document.getElementById("main-content");
   const isMobile = window.innerWidth <= 768;
-  const headerOffset = isMobile ? 90 : 20;
+  const headerOffset = isMobile ? 145 : 40;
   const elementPosition = mainContent.getBoundingClientRect().top;
   const offsetPosition = elementPosition + window.scrollY - headerOffset;
 
