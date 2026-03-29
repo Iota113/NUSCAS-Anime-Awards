@@ -7,7 +7,7 @@
 // ── CONFIG ───────────────────────────────────────────────────
 const CONFIG = {
   // Paste your Google Apps Script Web App URL here after setup
-  GOOGLE_SHEET_URL: "https://script.google.com/macros/s/AKfycbwg3jgtKIDJOmfCfMG0Bx39si5YzymSrCAoAXTuG3kYwkb-WsPsNPuk4BXR4X9HUTEm/exec",
+  GOOGLE_SHEET_URL: "https://script.google.com/macros/s/AKfycbypVRc6k89MVCiw04BYWTmSvytkAPJ5v45sJ2bDHkjFaZDKvbPnKM53OjigfXMgjVwP/exec",
 
   // Change this to prevent duplicate submissions
   // "localStorage" = one vote per browser (default)
@@ -194,7 +194,6 @@ function buildNomineeCard(cat, catIndex, nom, nomIndex, votedIndex) {
       <div class="card-info">
         <div class="card-anime-name">${nom.name}</div>
         ${nom.secondary ? `<div class="card-secondary">${nom.secondary}</div>` : ""}
-        <div class="card-nominee-label">Nominee #${nomIndex + 1}</div>
       </div>
       <button class="card-vote-btn" onclick="selectNominee('${cat.id}', ${nomIndex}); event.stopPropagation()">
         ${isSelected ? "✓ Selected" : "Select"}
@@ -468,3 +467,47 @@ window.addEventListener("scroll", () => {
     header.classList.remove("compact");
   }
 });
+
+// ── SIDEBAR ───────────────────────────────────────────────────
+function openSidebar() {
+  document.getElementById("sidebar").classList.add("open");
+  document.getElementById("sidebar-overlay").classList.add("visible");
+  buildSidebarContent();
+}
+
+function closeSidebar() {
+  document.getElementById("sidebar").classList.remove("open");
+  document.getElementById("sidebar-overlay").classList.remove("visible");
+}
+
+function buildSidebarContent() {
+  const body = document.getElementById("sidebar-body");
+
+  // Group categories by their tag
+  const groups = {};
+  CATEGORIES.forEach((cat, i) => {
+    if (!groups[cat.tag]) groups[cat.tag] = [];
+    groups[cat.tag].push({ cat, i });
+  });
+
+  const groupOrder = ["General", "Craft", "Genre", "Character", "Music & Audio"];
+
+  body.innerHTML = groupOrder.map(tag => {
+    if (!groups[tag]) return "";
+    const items = groups[tag].map(({ cat, i }) => {
+      const isActive = i === currentPage;
+      const isVoted  = currentVotes[cat.id] !== undefined;
+      return `
+        <li class="sidebar-item ${isActive ? "active" : ""}" onclick="goToPage(${i}); closeSidebar();">
+          <span class="sidebar-item-name">${cat.name}</span>
+          ${isVoted ? '<span class="sidebar-item-check">✓</span>' : ""}
+        </li>`;
+    }).join("");
+
+    return `
+      <div class="sidebar-group">
+        <div class="sidebar-group-label">${tag}</div>
+        <ul class="sidebar-group-list">${items}</ul>
+      </div>`;
+  }).join("");
+}

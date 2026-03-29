@@ -1,25 +1,23 @@
+// ============================================================
+//  DATA.JS — Edit this file to add/change nominees
+//  
+//  For each nominee:
+//    id: "Unique storage/database ID"
+//    tag: "Category Label"
+//    name: "Anime Title"
+//    description: "Short Sentence Description"
+//    image: "path/to/image.jpg"  OR  "" for placeholder
+//    video: "path/to/clip.mp4"  OR  "" for no video
+//    secondary: "e.g. Character name or studio" (optional)
+// ============================================================
 const CATEGORIES = [
 
   // ── GENERAL ─────────────────────────────────────────────
   {
-    id: "anime-of-the-year",
-    tag: "General",
-    filter: "general",
-    name: "Anime of the Year (2025)",
-    nominees: [
-      { name: "Apocalypse Hotel", image: "assets/images/compressed/apocalypse_hotel.webp", video: "", secondary: "C2C" },
-      { name: "My Hero Academia Final Season", image: "assets/images/compressed/mha_final.webp", video: "", secondary: "Bones Film" },
-      { name: "The Apothecary Diaries Season 2", image: "assets/images/compressed/apothecary_diaries.webp", video: "", secondary: "OLM, TOHO Animation" },
-      { name: "Takopi's Original Sin", image: "assets/images/compressed/takopi.webp", video: "", secondary: "ENISHIYA" },
-      { name: "The Summer Hikaru Died", image: "assets/images/compressed/the_summer_hikaru_died.webp", video: "", secondary: "CygamesPictures" },
-    ]
-  },
-
-  {
     id: "best-anime",
     tag: "General",
-    filter: "general",
     name: "Best Anime of All Time",
+    description: "The greatest anime series ever made — a timeless masterpiece that defines the medium.",
     nominees: [
       { name: "Clannad", image: "assets/images/compressed/clannad.webp", video: "", secondary: "Kyoto Animation" },
       { name: "Death Note", image: "assets/images/compressed/death_note.webp", video: "", secondary: "Madhouse" },
@@ -30,24 +28,24 @@ const CATEGORIES = [
   },
 
   {
-    id: "film-of-the-year",
+    id: "anime-of-the-year",
     tag: "General",
-    filter: "general",
-    name: "Film of the Year (2025 - 2026)",
+    name: "Anime of the Year (2025)",
+    description: "The standout anime that dominated 2025 — the one everyone was talking about.",
     nominees: [
-      { name: "100 Meters", image: "assets/images/compressed/100m.webp", video: "", secondary: "Rock 'n' Roll Mountain" },
-      { name: "Chainsaw Man – The Movie: Reze Arc", image: "assets/images/compressed/csm.webp", video: "", secondary: "MAPPA" },
-      { name: "Colorful Stage! The Movie: A Miku Who Can't Sing", image: "assets/images/compressed/miku.webp", video: "", secondary: "P.A. Works" },
-      { name: "Cosmic Princess Kaguya!", image: "assets/images/compressed/cosmic_princess.webp", video: "", secondary: "Studio Colorido, Studio Chromato" },
-      { name: "Demon Slayer: Kimetsu no Yaiba – The Movie: Infinity Castle", image: "assets/images/compressed/infinity_castle.webp", video: "", secondary: "ufotable" },
+      { name: "Apocalypse Hotel", image: "assets/images/compressed/apocalypse_hotel.webp", video: "", secondary: "C2C" },
+      { name: "My Hero Academia Final Season", image: "assets/images/compressed/mha_final.webp", video: "", secondary: "Bones Film" },
+      { name: "The Apothecary Diaries Season 2", image: "assets/images/compressed/apothecary_diaries.webp", video: "", secondary: "OLM, TOHO Animation" },
+      { name: "Takopi's Original Sin", image: "assets/images/compressed/takopi.webp", video: "", secondary: "ENISHIYA" },
+      { name: "The Summer Hikaru Died", image: "assets/images/compressed/the_summer_hikaru_died.webp", video: "", secondary: "CygamesPictures" },
     ]
   },
 
- {
+  {
     id: "best-film",
     tag: "General",
-    filter: "general",
     name: "Best Film of All Time",
+    description: "The greatest anime film ever — a cinematic achievement that transcends the screen.",
     nominees: [
       { name: "Liz and the Blue Bird", image: "assets/images/compressed/liz_and_blue_bird.webp", video: "", secondary: "Kyoto Animation" },
       { name: "Look Back", image: "assets/images/compressed/lookback.webp", video: "", secondary: "Studio Durian" },
@@ -58,10 +56,24 @@ const CATEGORIES = [
   },
 
   {
+    id: "film-of-the-year",
+    tag: "General",
+    name: "Film of the Year (2025 - 2026)",
+    description: "The best theatrical anime release from the 2025–2026 period.",
+    nominees: [
+      { name: "100 Meters", image: "assets/images/compressed/100m.webp", video: "", secondary: "Rock 'n' Roll Mountain" },
+      { name: "Chainsaw Man – The Movie: Reze Arc", image: "assets/images/compressed/csm.webp", video: "", secondary: "MAPPA" },
+      { name: "Colorful Stage! The Movie: A Miku Who Can't Sing", image: "assets/images/compressed/miku.webp", video: "", secondary: "P.A. Works" },
+      { name: "Cosmic Princess Kaguya!", image: "assets/images/compressed/cosmic_princess.webp", video: "", secondary: "Studio Colorido, Studio Chromato" },
+      { name: "Demon Slayer: Kimetsu no Yaiba – The Movie: Infinity Castle", image: "assets/images/compressed/infinity_castle.webp", video: "", secondary: "ufotable" },
+    ]
+  },
+
+  {
     id: "best-continuing-series",
     tag: "General",
-    filter: "general",
     name: "Best Continuing Series (2026)",
+    description: "The best returning series airing in 2026 that keeps delivering season after season.",
     nominees: [
       { name: "Frieren: Beyond Journey's End Season 2", image: "assets/images/compressed/frieren_2.webp", secondary: "Madhouse" },
       { name: "JoJo's Bizarre Adventure: Steel Ball Run", image: "assets/images/compressed/sbr.webp", secondary: "David Production" },
@@ -74,8 +86,8 @@ const CATEGORIES = [
   {
     id: "best-new-series",
     tag: "General",
-    filter: "general",
     name: "Best New Series (2026)",
+    description: "The freshest debut of 2026 — a new series that hit the ground running.",
     nominees: [
       { name: "Fate/strange Fake", image: "assets/images/compressed/fsf.webp", secondary: "A-1 Pictures" },
       { name: "Journal with Witch", image: "assets/images/compressed/journal_with_witch.webp", secondary: "Shuka" },
@@ -88,8 +100,8 @@ const CATEGORIES = [
   {
     id: "best-original-anime",
     tag: "General",
-    filter: "general",
     name: "Best Original Anime",
+    description: "Best anime with a story original to the screen — not adapted from manga, light novel, or game.",
     nominees: [
       { name: "Angel Beats!", image: "assets/images/compressed/angel_beats.webp", video: "", secondary: "P.A. Works" },
       { name: "Code Geass", image: "assets/images/compressed/code_geass.webp", secondary: "Sunrise" },
@@ -103,8 +115,8 @@ const CATEGORIES = [
   {
     id: "best-animation",
     tag: "Craft",
-    filter: "craft",
     name: "Best Animation",
+    description: "The most fluid, expressive, and visually breathtaking animation on screen.",
     nominees: [
       { name: "Frieren: Beyond Journey's End", image: "assets/images/compressed/frieren.webp", video: "", secondary: "Madhouse" },
       { name: "Jujutsu Kaisen", image: "assets/images/compressed/jjk.webp", video: "", secondary: "MAPPA" },
@@ -117,8 +129,8 @@ const CATEGORIES = [
   {
     id: "best-character-design",
     tag: "Craft",
-    filter: "craft",
     name: "Best Character Design",
+    description: "The most iconic, distinctive, or beautifully crafted character aesthetics.",
     nominees: [
       { name: "Gachiakuta", image: "assets/images/compressed/gachiakuta.webp", video: "", secondary: "Bones Film" },
       { name: "Hellsing Ultimate", image: "assets/images/compressed/hellsing.webp", video: "", secondary: "Madhouse, Satelight, Graphinica" },
@@ -128,12 +140,11 @@ const CATEGORIES = [
     ]
   },
 
-    {
+  {
     id: "best-director",
     tag: "Craft",
-    filter: "craft",
     name: "Best Director",
-    description: "Recognising exceptional vision and direction in anime.",
+    description: "Recognising exceptional vision and direction that elevates the entire work.",
     nominees: [
       { name: "Hayao Miyazaki", image: "assets/images/compressed/hayao_miyazaki.webp", video: "", secondary: "Spirited Away / Princess Mononoke / Howl's Moving Castle / The Boy and the Heron" },
       { name: "Keiichirō Saitō", image: "assets/images/compressed/keiichiro.webp", video: "", secondary: "Frieren: Beyond Journey's End / Bocchi the Rock / Sonny Boy" },
@@ -146,14 +157,14 @@ const CATEGORIES = [
   {
     id: "best-background-art",
     tag: "Craft",
-    filter: "craft",
     name: "Best Background Art",
+    description: "Stunning environmental artwork that makes every frame feel like a painting.",
     nominees: [
       { name: "Monogatari Series", image: "assets/images/compressed/kizumono.webp", video: "", secondary: "Shaft" },
       { name: "Mushishi", image: "assets/images/compressed/mushishi.webp", video: "", secondary: "Artland" },
       { name: "Mushoku Tensei: Jobless Reincarnation", image: "assets/images/compressed/mushoku_tensei.webp", video: "", secondary: "Studio Bind" },
       { name: "Shōshimin: How to Become Ordinary", image: "assets/images/compressed/shoshimin.webp", video: "", secondary: "Lapin Track" },
-   { name: "Violet Evergarden", image: "assets/images/compressed/violet_evergarden.webp", video: "", secondary: "Kyoto Animation" },
+      { name: "Violet Evergarden", image: "assets/images/compressed/violet_evergarden.webp", video: "", secondary: "Kyoto Animation" },
     ]
   },
 
@@ -161,22 +172,22 @@ const CATEGORIES = [
   {
     id: "best-romance",
     tag: "Genre",
-    filter: "genre",
     name: "Best Romance",
+    description: "The most heartfelt, swoony, or emotionally resonant love story in anime.",
     nominees: [
       { name: "Kaguya-sama: Love Is War", image: "assets/images/compressed/kaguya_sama.webp", secondary: "A-1 Pictures" },
       { name: "Horimiya", image: "assets/images/compressed/horimiya.webp", secondary: "CloverWorks" },
       { name: "Ouran High School Host Club", image: "assets/images/compressed/ouran_highschool.webp", secondary: "Bones" },
       { name: "WorldEnd", image: "assets/images/compressed/worldend.webp", secondary: "Satelight, C2C" },
-      { name: "Revolutionary Girl Utena", image: "assets/images/compressed/utena.webp",  secondary: "J.C.Staff" },
+      { name: "Revolutionary Girl Utena", image: "assets/images/compressed/utena.webp", secondary: "J.C.Staff" },
     ]
   },
 
   {
     id: "best-comedy",
     tag: "Genre",
-    filter: "genre",
     name: "Best Comedy",
+    description: "The anime that had you laughing hardest — sharp writing, perfect timing.",
     nominees: [
       { name: "Gintama", image: "assets/images/compressed/gintama.webp", secondary: "Sunrise" },
       { name: "Grand Blue Dreaming", image: "assets/images/compressed/grand_blue.webp", secondary: "Zero-G" },
@@ -189,8 +200,8 @@ const CATEGORIES = [
   {
     id: "best-action",
     tag: "Genre",
-    filter: "genre",
     name: "Best Action",
+    description: "The most explosive, well-choreographed, and hype-inducing action anime.",
     nominees: [
       { name: "Attack on Titan", image: "assets/images/compressed/aot.webp", secondary: "Wit Studio / MAPPA" },
       { name: "Bleach: Thousand-Year Blood War", image: "assets/images/compressed/bleach_tybw.webp", secondary: "Studio Pierrot" },
@@ -203,8 +214,8 @@ const CATEGORIES = [
   {
     id: "best-isekai",
     tag: "Genre",
-    filter: "genre",
     name: "Best Isekai",
+    description: "The best anime featuring a character thrown into another world entirely.",
     nominees: [
       { name: "No Game No Life", image: "assets/images/compressed/NGNL.webp", secondary: "Madhouse" },
       { name: "Overlord", image: "assets/images/compressed/overlord.webp", secondary: "Madhouse" },
@@ -217,8 +228,8 @@ const CATEGORIES = [
   {
     id: "best-drama",
     tag: "Genre",
-    filter: "genre",
     name: "Best Drama",
+    description: "The most emotionally gripping and dramatically compelling anime.",
     nominees: [
       { name: "From the New World", image: "assets/images/compressed/shinsekai_yori.webp", video: "", secondary: "A-1 Pictures" },
       { name: "Scum's Wish", image: "assets/images/compressed/kuzu_no_honkai.webp", video: "", secondary: "Lerche" },
@@ -231,13 +242,13 @@ const CATEGORIES = [
   {
     id: "best-slice-of-life",
     tag: "Genre",
-    filter: "genre",
     name: "Best Slice of Life",
+    description: "Celebrating the warmth, simplicity, and quiet beauty of everyday anime.",
     nominees: [
       { name: "Deaimon: Recipe for Happiness", image: "assets/images/compressed/deaimon.webp", video: "", secondary: "Encourage Films" },
       { name: "Hyouka", image: "assets/images/compressed/hyouka.webp", video: "", secondary: "Kyoto Animation" },
       { name: "JoJo's Bizarre Adventure: Diamond Is Unbreakable", image: "assets/images/compressed/DIU.webp", video: "", secondary: "David Production" },
-      { name: "Miss Kobayashi's Dragon Maid", image: "assets/images/compressed/kobayashi.webp", video: "", secondary: "Kyoto Animation`" },
+      { name: "Miss Kobayashi's Dragon Maid", image: "assets/images/compressed/kobayashi.webp", video: "", secondary: "Kyoto Animation" },
       { name: "Secrets of the Silent Witch", image: "assets/images/compressed/secrets_of_the_silent_witch.webp", video: "", secondary: "Studio Gokumi" },
     ]
   },
@@ -245,8 +256,8 @@ const CATEGORIES = [
   {
     id: "best-chinese-anime",
     tag: "Genre",
-    filter: "genre",
     name: "Best Chinese Anime",
+    description: "The best donghua — celebrating the rise of Chinese animation on the world stage.",
     nominees: [
       { name: "Feng Ling Yu Xiu", image: "assets/images/compressed/fenglingyuxiu.webp", video: "", secondary: "Sunflowers" },
       { name: "Link Click", image: "assets/images/compressed/link_click.webp", video: "", secondary: "LAN Studio" },
@@ -259,8 +270,8 @@ const CATEGORIES = [
   {
     id: "best-mystery",
     tag: "Genre",
-    filter: "genre",
     name: "Best Mystery",
+    description: "The anime that kept you guessing — twists, tension, and satisfying reveals.",
     nominees: [
       { name: "Attack on Titan", image: "assets/images/compressed/aot.webp", secondary: "Wit Studio / MAPPA" },
       { name: "Baccano!", image: "assets/images/compressed/baccano.webp", video: "", secondary: "Brain's Base" },
@@ -273,8 +284,8 @@ const CATEGORIES = [
   {
     id: "best-sci-fi",
     tag: "Genre",
-    filter: "genre",
     name: "Best Sci-Fi",
+    description: "The best anime exploring science, technology, space, and the future of humanity.",
     nominees: [
       { name: "Cowboy Bebop", image: "assets/images/compressed/cowboy_bebop.webp", secondary: "Sunrise" },
       { name: "Legend of the Galactic Heroes", image: "assets/images/compressed/legend_galactic.webp", secondary: "Kitty Film Mitaka Studio" },
@@ -287,8 +298,8 @@ const CATEGORIES = [
   {
     id: "best-horror",
     tag: "Genre",
-    filter: "genre",
     name: "Best Horror",
+    description: "The anime that genuinely unsettled, disturbed, or scared you.",
     nominees: [
       { name: "Kaya-chan Isn't Scary", image: "assets/images/compressed/kaya_chan.webp", secondary: "East Fish Studio" },
       { name: "Mononoke", image: "assets/images/compressed/mononoke.webp", secondary: "Toei Animation" },
@@ -301,8 +312,8 @@ const CATEGORIES = [
   {
     id: "best-thriller",
     tag: "Genre",
-    filter: "genre",
     name: "Best Thriller",
+    description: "Edge-of-your-seat tension — the anime that made your heart race every episode.",
     nominees: [
       { name: "Classroom of the Elite", image: "assets/images/compressed/COTE.webp", video: "", secondary: "Lerche" },
       { name: "Kaiji: Ultimate Survivor", image: "assets/images/compressed/kaiji.webp", video: "", secondary: "Madhouse" },
@@ -315,8 +326,8 @@ const CATEGORIES = [
   {
     id: "best-sports",
     tag: "Genre",
-    filter: "genre",
     name: "Best Sports",
+    description: "The best anime that captured the spirit of competition, teamwork, and triumph.",
     nominees: [
       { name: "Blue Lock", image: "assets/images/compressed/blue_lock.webp", video: "", secondary: "8bit" },
       { name: "Girls und Panzer", image: "assets/images/compressed/girls_und_panzer.webp", video: "", secondary: "Actas" },
@@ -329,8 +340,8 @@ const CATEGORIES = [
   {
     id: "best-mecha",
     tag: "Genre",
-    filter: "genre",
     name: "Best Mecha",
+    description: "Giant robots, epic battles, and the best of the mecha genre.",
     nominees: [
       { name: "86 -Eighty Six-", image: "assets/images/compressed/86.webp", secondary: "A-1 Pictures" },
       { name: "Code Geass", image: "assets/images/compressed/code_geass.webp", secondary: "Sunrise" },
@@ -340,12 +351,11 @@ const CATEGORIES = [
     ]
   },
 
-
   {
     id: "best-music-idol",
     tag: "Genre",
-    filter: "genre",
     name: "Best Music / Idol",
+    description: "The best anime centred around music, bands, idols, or the performing arts.",
     nominees: [
       { name: "Bocchi the Rock!", image: "assets/images/compressed/bocchi.webp", secondary: "CloverWorks" },
       { name: "BanG Dream! It's MyGO!!!!!", image: "assets/images/compressed/mygo.webp", secondary: "SANZIGEN" },
@@ -354,12 +364,13 @@ const CATEGORIES = [
       { name: "Zombieland Saga", image: "assets/images/compressed/zombieland_saga.webp", secondary: "MAPPA" },
     ]
   },
+
   // ── CHARACTER ────────────────────────────────────────────
   {
     id: "best-main-character",
     tag: "Character",
-    filter: "character",
     name: "Best Main Character",
+    description: "The most compelling, well-written protagonist you rooted for from start to finish.",
     nominees: [
       { name: "Eren Yeager", image: "assets/images/compressed/eren.webp", video: "", secondary: "Attack on Titan" },
       { name: "Monkey D. Luffy", image: "assets/images/compressed/luffy.webp", video: "", secondary: "One Piece" },
@@ -372,8 +383,8 @@ const CATEGORIES = [
   {
     id: "best-supporting-character",
     tag: "Character",
-    filter: "character",
     name: "Best Supporting Character",
+    description: "The side character who stole every scene they were in.",
     nominees: [
       { name: "Arataka Reigen", image: "assets/images/compressed/reigen.webp", video: "", secondary: "Mob Psycho 100" },
       { name: "Bruno Bucciarati", image: "assets/images/compressed/bruno.webp", video: "", secondary: "JoJo's Bizarre Adventure: Golden Wind" },
@@ -386,8 +397,8 @@ const CATEGORIES = [
   {
     id: "must-protect",
     tag: "Character",
-    filter: "character",
     name: '"Must Protect At All Costs" Character',
+    description: "The character who made you feel an overwhelming, irrational need to protect them.",
     nominees: [
       { name: "Chiikawa", image: "assets/images/compressed/chiikawa.webp", video: "", secondary: "Chiikawa" },
       { name: "Emiya Shirou", image: "assets/images/compressed/emiya_shirou.webp", video: "", secondary: "Fate/stay night" },
@@ -401,8 +412,8 @@ const CATEGORIES = [
   {
     id: "best-score",
     tag: "Music & Audio",
-    filter: "music",
     name: "Best Score",
+    description: "The original soundtrack that elevated every scene and lived rent-free in your head.",
     nominees: [
       { name: "Attack on Titan", image: "assets/images/compressed/aot_s3_ost.webp", secondary: "Hiroyuki Sawano / Kohta Yamamoto" },
       { name: "Chainsaw Man – The Movie: Reze Arc", image: "assets/images/compressed/csm_reze_ost.webp", video: "", secondary: "Kensuke Ushio" },
@@ -415,8 +426,8 @@ const CATEGORIES = [
   {
     id: "best-opening",
     tag: "Music & Audio",
-    filter: "music",
     name: "Best Opening Sequence",
+    description: "The opening you never once pressed skip on.",
     nominees: [
       { name: "Crying for Rain - 美波 (Minami)", image: "assets/images/compressed/dome_kano.webp", video: "", secondary: "Domestic Girlfriend" },
       { name: "Idol - YOASOBI", image: "assets/images/compressed/idol.webp", video: "", secondary: "Oshi no Ko" },
@@ -429,8 +440,8 @@ const CATEGORIES = [
   {
     id: "best-ending",
     tag: "Music & Audio",
-    filter: "music",
     name: "Best Ending Sequence",
+    description: "The ending sequence that gave you the perfect send off after every episode.",
     nominees: [
       { name: "Anytime Anywhere - milet", image: "assets/images/compressed/frieren.webp", video: "", secondary: "Frieren: Beyond Journey's End" },
       { name: "Departures - EGOIST", image: "assets/images/compressed/departures.webp", video: "", secondary: "Guilty Crown" },
@@ -443,10 +454,10 @@ const CATEGORIES = [
   {
     id: "best-va-jp",
     tag: "Music & Audio",
-    filter: "music",
     name: "Best Voice Artist Performance (Japanese)",
+    description: "An outstanding performance in the Japanese dub that brought a character to life.",
     nominees: [
-      { name: "Daisuke Ono", image: "assets/images/compressed/daisuke_ono.webp", video: "", secondary: "Kujo Jotaro / Sebastian / Erwin Smith / Jyushimatsu / Itsuki Koizumi"},
+      { name: "Daisuke Ono", image: "assets/images/compressed/daisuke_ono.webp", video: "", secondary: "Kujo Jotaro / Sebastian / Erwin Smith / Jyushimatsu / Itsuki Koizumi" },
       { name: "Reina Ueda", image: "assets/images/compressed/reina.webp", video: "", secondary: "Reze / Kanao / Ganyu / Chinatsu" },
       { name: "Rie Takahashi", image: "assets/images/compressed/rie_takahashi.webp", video: "", secondary: "Megumin / Emilia / Hu Tao / Takagi / Ai" },
       { name: "Takehito Koyasu", image: "assets/images/compressed/koyasu.webp", video: "", secondary: "Dio Brando / Toji / Zeke Yeager / Roswaal / Papa Shirogane" },
@@ -457,12 +468,12 @@ const CATEGORIES = [
   {
     id: "best-va-en",
     tag: "Music & Audio",
-    filter: "music",
     name: "Best Voice Artist Performance (English)",
+    description: "An outstanding performance in the English dub that made the character entirely their own.",
     nominees: [
       { name: "Amber Lee Connors", image: "assets/images/compressed/amber_lee.webp", video: "", secondary: "Furina / Mei Mei / Pieck Finger / Komi Shoko" },
-      { name: "Christopher Sabat", image: "assets/images/compressed/sabat.webp", video: "", secondary: "Roronoa Zoro / Vegeta / All Might / Alex Louis Armstrong / " },
-      { name: "Felecia Angelle", image: "assets/images/compressed/felicia.webp", video: "", secondary: "Mona Megistus / Shinoa Hiragi / Emi Yusa / Nakano Miku / Shalltear Bloodfallen " },
+      { name: "Christopher Sabat", image: "assets/images/compressed/sabat.webp", video: "", secondary: "Roronoa Zoro / Vegeta / All Might / Alex Louis Armstrong" },
+      { name: "Felecia Angelle", image: "assets/images/compressed/felicia.webp", video: "", secondary: "Mona Megistus / Shinoa Hiragi / Emi Yusa / Nakano Miku / Shalltear Bloodfallen" },
       { name: "Ian Sinclair", image: "assets/images/compressed/ian_sinclair.webp", video: "", secondary: "Narrator (Kaguya Sama Love is War) / Brook / Space Dandy / Tsukasa Shishio / Whis" },
       { name: "Monica Rial", image: "assets/images/compressed/monica.webp", video: "", secondary: "Mirajane Strauss / Tsubaki Nakatsukasa / Index / Yona / Tanya von Degurechaff" },
     ]
