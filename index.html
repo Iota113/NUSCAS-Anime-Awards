@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>NUS CAS Anime Awards</title>
+  <title>NUS CAS Anime Awards — Ceremony</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Nunito:wght@400;600;700;800;900&family=Noto+Sans+JP:wght@400;700;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css" />
@@ -45,23 +45,20 @@
         <h1 class="site-title">
           <span class="title-line2">Anime Awards</span>
         </h1>
-        <p class="header-subtitle">Cast your votes for the best in anime!</p>
+        <p class="header-subtitle ceremony-badge">Awards Ceremony</p>
       </div>
     </div>
 
-    <!-- Vote All Button -->
+    <!-- Ceremony progress bar -->
     <div class="header-cta">
       <div class="voting-status-bar">
         <div class="progress-info">
-          <span id="categories-voted">0</span> / <span id="categories-total">25</span> categories voted
+          <span id="categories-revealed">0</span> / <span id="categories-total">25</span> winners revealed
         </div>
         <div class="progress-track">
-          <div class="progress-fill" id="vote-progress-bar"></div>
+          <div class="progress-fill" id="reveal-progress-bar"></div>
         </div>
       </div>
-      <button class="btn-submit-all" id="submit-all-btn" onclick="submitAllVotes()">
-        <span class="btn-icon">🏆</span> Submit All Votes
-      </button>
     </div>
   </header>
 
@@ -72,55 +69,35 @@
     </div>
   </main>
 
-  <!-- SUBMISSION MODAL -->
-<div class="modal-overlay" id="submit-modal" style="display:none">
-    <div class="modal-box">
-      <button class="modal-close-x" onclick="closeModal()" aria-label="Close modal">&times;</button>
-      
-      <div class="modal-header">
-        <span class="modal-icon">🎌</span>
-        <h2>Confirm Your Votes</h2>
-      </div>
-      <div class="modal-body" id="modal-vote-summary">
-        </div>
-      <div class="modal-unvoted-warning" id="modal-unvoted" style="display:none">
-        <span>⚠️</span> <span id="unvoted-text"></span>
-      </div>
-      <div class="modal-actions">
-        <button class="btn-cancel" onclick="closeModal()">Go Back</button>
-        <button class="btn-confirm" id="confirm-submit-btn" onclick="confirmSubmit()">
-          <span>Submit Votes 🏆</span>
-        </button>
-      </div>
+  <!-- WINNER REVEAL OVERLAY -->
+  <div class="winner-overlay" id="winner-overlay">
+    <div class="winner-overlay-bg" id="winner-overlay-bg"></div>
+    <div class="confetti-container" id="confetti-container"></div>
+    <div class="winner-card" id="winner-card">
+      <div class="winner-trophy">🏆</div>
+      <div class="winner-category-label" id="winner-category-label"></div>
+      <div class="winner-name" id="winner-name"></div>
+      <div class="winner-secondary" id="winner-secondary"></div>
+      <img class="winner-image" id="winner-image" src="" alt="" />
+      <button class="winner-close-btn" onclick="closeWinnerOverlay()">Continue →</button>
     </div>
   </div>
 
   <!-- SUCCESS TOAST -->
   <div class="toast" id="toast" style="display:none">
     <span class="toast-icon">✅</span>
-    <span id="toast-msg">Vote submitted!</span>
-  </div>
-
-  <!-- ALREADY VOTED MODAL -->
-  <div class="modal-overlay" id="voted-modal" style="display:none">
-    <div class="modal-box voted-modal-box">
-      <div class="voted-icon">🏆</div>
-      <h2>You've Already Voted!</h2>
-      <p>Your votes have been recorded. Results will be revealed at the award ceremony.</p>
-      <p class="voted-sub">Thank you for participating in the NUS CAS Anime Awards!</p>
-      <button class="btn-confirm" onclick="document.getElementById('voted-modal').style.display='none'">Close</button>
-    </div>
+    <span id="toast-msg">Done!</span>
   </div>
 
   <footer class="site-footer">
-  <div class="footer-inner">
-    <img src="assets/logo-Photoroom.png" alt="NUSCAS Logo" class="footer-logo">
-    <div class="footer-text-wrap">
-      <div class="footer-name">NUS Comics & Animation Society</div>
-      <div class="footer-sub">Anime Awards &nbsp;·&nbsp; All rights reserved</div>
+    <div class="footer-inner">
+      <img src="assets/logo-Photoroom.png" alt="NUSCAS Logo" class="footer-logo">
+      <div class="footer-text-wrap">
+        <div class="footer-name">NUS Comics & Animation Society</div>
+        <div class="footer-sub">Anime Awards &nbsp;·&nbsp; Awards Ceremony</div>
+      </div>
     </div>
-  </div>
-</footer>
+  </footer>
 
   <script src="js/data.js"></script>
   <script src="js/app.js"></script>
