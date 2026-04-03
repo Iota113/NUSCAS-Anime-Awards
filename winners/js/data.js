@@ -415,11 +415,11 @@ const CATEGORIES = [
     description: "The most compelling, well-written protagonist you rooted for from start to finish.",
     winner: "Okabe Rintarou", // Kept Okabe as winner based on previous file, note that there was a tie with Luffy (26.80% each)
     nominees: [
-      { name: "Monkey D. Luffy", image: "../assets/images/compressed/luffy.webp", video: "", secondary: "One Piece", percentage: 26.80 },
-      { name: "Okabe Rintarou", image: "../assets/images/compressed/rintarou.webp", video: "", secondary: "Steins;Gate", percentage: 26.80 },
-      { name: "Rentarou Aijō", image: "../assets/images/compressed/rentarou.webp", video: "", secondary: "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You", percentage: 17.90 },
-      { name: "Eren Yeager", image: "../assets/images/compressed/eren.webp", video: "", secondary: "Attack on Titan", percentage: 16.10 },
-      { name: "Thorfinn Karlsefni", image: "../assets/images/compressed/thorfinn.webp", video: "", secondary: "Vinland Saga", percentage: 12.50 },
+      { name: "Monkey D. Luffy", image: "../assets/images/compressed/luffy.webp", video: "", secondary: "One Piece", percentage: 26.31 },
+      { name: "Okabe Rintarou", image: "../assets/images/compressed/rintarou.webp", video: "", secondary: "Steins;Gate", percentage: 28.06 },
+      { name: "Rentarou Aijō", image: "../assets/images/compressed/rentarou.webp", video: "", secondary: "The 100 Girlfriends Who Really, Really, Really, Really, Really Love You", percentage: 17.54 },
+      { name: "Eren Yeager", image: "../assets/images/compressed/eren.webp", video: "", secondary: "Attack on Titan", percentage: 15.79 },
+      { name: "Thorfinn Karlsefni", image: "../assets/images/compressed/thorfinn.webp", video: "", secondary: "Vinland Saga", percentage: 12.28 },
     ]
   },
 
@@ -476,11 +476,11 @@ const CATEGORIES = [
     description: "The greatest anime film ever — a cinematic achievement that transcends the screen.",
     winner: "Your Name", // Kept Your Name as winner based on previous file, note that there was a tie with Spirited Away (32.10% each)
     nominees: [
-      { name: "Spirited Away", image: "../assets/images/compressed/spirited_away.webp", video: "", secondary: "Studio Ghibli", percentage: 32.10 },
-      { name: "Your Name", image: "../assets/images/compressed/your_name.webp", video: "", secondary: "CoMix Wave Films", percentage: 32.10 },
-      { name: "Look Back", image: "../assets/images/compressed/lookback.webp", video: "../assets/images/compressed/lookback.webp", secondary: "Studio Durian", percentage: 12.50 },
-      { name: "Paprika", image: "../assets/images/compressed/paprika.webp", video: "", secondary: "Madhouse", percentage: 12.50 },
-      { name: "Liz and the Blue Bird", image: "../assets/images/compressed/liz_and_blue_bird.webp", video: "", secondary: "Kyoto Animation", percentage: 10.70 },
+      { name: "Spirited Away", image: "../assets/images/compressed/spirited_away.webp", video: "", secondary: "Studio Ghibli", percentage: 31.58 },
+      { name: "Your Name", image: "../assets/images/compressed/your_name.webp", video: "", secondary: "CoMix Wave Films", percentage: 33.33 },
+      { name: "Look Back", image: "../assets/images/compressed/lookback.webp", video: "../assets/images/compressed/lookback.webp", secondary: "Studio Durian", percentage: 12.28 },
+      { name: "Paprika", image: "../assets/images/compressed/paprika.webp", video: "", secondary: "Madhouse", percentage: 12.28 },
+      { name: "Liz and the Blue Bird", image: "../assets/images/compressed/liz_and_blue_bird.webp", video: "", secondary: "Kyoto Animation", percentage: 10.53 },
     ]
   },  
 
