@@ -946,6 +946,13 @@ body {
 .page-dot.voted  { background: var(--gold); border-color: var(--gold-dark); }
 .page-dot.voted.active { background: var(--gold); border-color: var(--gold-dark); box-shadow: 0 0 0 2px rgba(201,148,10,0.35); }
 
+/* Hide page dots on mobile devices */
+@media (max-width: 768px) {
+  .page-dots {
+    display: none;
+  }
+}
+
 @media (max-width: 480px) {
   .btn-page { padding: 0.55rem 1rem; font-size: 0.85rem; }
 }
@@ -1115,4 +1122,51 @@ body {
   .winner-card { padding: 28px 24px; }
   .winner-name { font-size: 26px; }
   .btn-reveal { font-size: 18px; padding: 12px 32px; }
+}
+
+/* ── VOTE DISTRIBUTION BARS ───────────────────────────────── */
+.vote-distribution {
+  margin-top: auto; 
+  /* Using a darker background for the track to make it pop against the cream card */
+  background: rgba(0, 0, 0, 0.08); 
+  border-radius: 4px;
+  height: 22px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+
+.vote-bar {
+  height: 100%;
+  /* Darkened the "loser" bar to a deep charcoal/burgundy mix for better visibility */
+  background: #3d2418; 
+  border-radius: 4px;
+  animation: loadBar 1s ease-out forwards;
+  transform-origin: left;
+}
+
+.card-winner .vote-bar {
+  background: var(--gold-dark); /* Using your existing gold-dark variable */
+}
+
+.vote-text {
+  position: absolute;
+  right: 8px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  /* Default text color for non-winners (dark contrast) */
+  color: var(--ink); 
+  z-index: 2;
+}
+
+/* Specific text color for winners so it stays white against the dark gold bar */
+.card-winner .vote-text {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+@keyframes loadBar {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
 }
