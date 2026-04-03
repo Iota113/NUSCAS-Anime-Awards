@@ -467,11 +467,11 @@ function selectFromDropdown(index) {
 window.addEventListener("scroll", () => {
   const header = document.querySelector(".site-header");
   
-  if (window.scrollY > 80) {
-    header.classList.add("compact");
-  } else {
-    header.classList.remove("compact");
-  }
+  // if (window.scrollY > 80) {
+  //   header.classList.add("compact");
+  // } else {
+  //   header.classList.remove("compact");
+  // }
 });
 
 // ── SIDEBAR ───────────────────────────────────────────────────

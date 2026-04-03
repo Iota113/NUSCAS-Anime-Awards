@@ -45,21 +45,104 @@ body {
    HEADER
    ============================ */
 .site-header {
-  background: radial-gradient(
-    circle at 25% 40%, 
-    rgba(45, 66, 115, 0.8) 0%,
-    var(--navy-dark) 60%        
-  );
+  background:
+    radial-gradient(ellipse at 15% 50%, rgba(255, 90, 10, 0.95) 0%, transparent 45%),
+    radial-gradient(ellipse at 70% 15%, rgba(190, 40, 230, 0.75) 0%, transparent 40%),
+    radial-gradient(ellipse at 55% 85%, rgba(220, 20, 70, 0.55) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 60%, rgba(245, 180, 20, 0.4) 0%, transparent 35%),
+    #0d0518;
   padding: 40px 24px 32px;
-  position: relative;
-  overflow: hidden;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  overflow: hidden;
   z-index: 1000;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+/* ============================
+   DISCORD ICON SNAPSHOT MODE
+   — Add .discord-snap to <header> before screenshotting
+   — Remove it after
+   ============================ */
+.site-header.discord-snap {
+  position: relative;        /* un-fixes it so it flows naturally */
+  width: 1000px;              /* square-ish crop width */
+  min-height: 800px;         /* force square */
+  padding: 48px 36px 40px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Hide the sidebar toggle — not needed in icon */
+.site-header.discord-snap .sidebar-toggle {
+  display: none;
+}
+
+/* Center the inner content */
+.site-header.discord-snap .header-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999; /* Ensures it stays above other elements */
+  
+  /* Your existing styles */
+  flex-direction: row;
+  justify-content: center; 
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  padding: 0;
+  padding-top: 160px;
+  max-width: 100%;
+  margin: 0;
+}
+
+/* Bigger logo for icon legibility */
+.site-header.discord-snap .site-logo {
+  height: 140px;
+}
+
+/* Scale up the title */
+.site-header.discord-snap .title-line2 {
+  font-size: 52px;
+}
+
+.site-header.discord-snap .header-eyebrow {
+  font-size: 15px;
+  letter-spacing: 0.25em;
+}
+
+/* Hide the progress bar CTA — not needed */
+.site-header.discord-snap .header-cta {
+  display: none;
+}
+
+/* Shimmer sweep */
+.site-header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 30%,
+    rgba(255, 255, 255, 0.04) 50%,
+    transparent 70%
+  );
+  background-size: 200% 100%;
+  animation: headerShimmer 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+@keyframes headerShimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
 
 .site-header.compact {
   padding: 10px 24px;
@@ -192,17 +275,35 @@ body {
 
 .sparkle {
   position: absolute;
-  font-size: 24px;
-  opacity: 0.15;
+  opacity: 0;
   animation: floatSpark 6s ease-in-out infinite;
+  pointer-events: none;
+  line-height: 1;
 }
-.sparkle.s1 { top: 10%; left: 5%; color: var(--orange); animation-delay: 0s; font-size: 32px; }
-.sparkle.s2 { top: 30%; left: 15%; color: var(--red-diamond); animation-delay: 1s; font-size: 18px; }
-.sparkle.s3 { top: 70%; left: 8%; color: var(--green-diamond); animation-delay: 2s; font-size: 28px; }
-.sparkle.s4 { top: 15%; right: 8%; color: var(--yellow-diamond); animation-delay: 0.5s; font-size: 36px; }
-.sparkle.s5 { top: 55%; right: 5%; color: var(--orange); animation-delay: 1.5s; font-size: 22px; }
-.sparkle.s6 { top: 80%; right: 15%; color: var(--blue-light); animation-delay: 3s; font-size: 20px; }
 
+/* Original sparkles — bumped up opacity */
+.sparkle.s1  { top: 10%; left: 5%;   color: #ff6a14; font-size: 32px; animation-delay: 0s;   animation-duration: 5.5s; }
+.sparkle.s2  { top: 30%; left: 15%;  color: #e03b3b; font-size: 18px; animation-delay: 1s;   }
+.sparkle.s3  { top: 70%; left: 8%;   color: #3db87a; font-size: 28px; animation-delay: 2s;   }
+.sparkle.s4  { top: 15%; right: 8%;  color: #f5c842; font-size: 36px; animation-delay: 0.5s; animation-duration: 7s; }
+.sparkle.s5  { top: 55%; right: 5%;  color: #ff6a14; font-size: 22px; animation-delay: 1.5s; }
+.sparkle.s6  { top: 80%; right: 15%; color: #4a90d9; font-size: 20px; animation-delay: 3s;   }
+
+/* New sparkles */
+.sparkle.s7  { top: 5%;  left: 35%;  color: #cc44ff; font-size: 28px; animation-delay: 0.8s; animation-duration: 6.5s; }
+.sparkle.s8  { top: 45%; left: 25%;  color: #f5c842; font-size: 14px; animation-delay: 2.5s; animation-duration: 4.5s; }
+.sparkle.s9  { top: 85%; left: 45%;  color: #ff6a14; font-size: 24px; animation-delay: 1.2s; }
+.sparkle.s10 { top: 20%; right: 25%; color: #e03b3b; font-size: 16px; animation-delay: 3.5s; animation-duration: 5s;   }
+.sparkle.s11 { top: 60%; right: 30%; color: #f5c842; font-size: 30px; animation-delay: 0.3s; animation-duration: 8s;   }
+.sparkle.s12 { top: 5%;  right: 45%; color: #4a90d9; font-size: 20px; animation-delay: 4s;   }
+
+@keyframes floatSpark {
+  0%   { transform: translateY(0)     rotate(0deg);  opacity: 0;    }
+  15%  { opacity: 0.55; }
+  50%  { transform: translateY(-22px) rotate(22deg); opacity: 0.7;  }
+  85%  { opacity: 0.55; }
+  100% { transform: translateY(0)     rotate(0deg);  opacity: 0;    }
+}
 @keyframes floatSpark {
   0%, 100% { transform: translateY(0) rotate(0deg); opacity: 0.15; }
   50% { transform: translateY(-20px) rotate(20deg); opacity: 0.35; }
