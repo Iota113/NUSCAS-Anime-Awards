@@ -13,66 +13,7 @@
 // ============================================================
 const CATEGORIES = [
 
-  // ── GENERAL ─────────────────────────────────────────────
-  {
-    id: "best-anime",
-    tag: "General",
-    name: "Best Anime of All Time",
-    description: "The greatest anime series ever made — a timeless masterpiece that defines the medium.",
-    winner: "Frieren: Beyond Journey's End",
-    nominees: [
-      { name: "Clannad", image: "assets/images/compressed/clannad.webp", video: "", secondary: "Kyoto Animation" },
-      { name: "Death Note", image: "assets/images/compressed/death_note.webp", video: "", secondary: "Madhouse" },
-      { name: "Frieren: Beyond Journey's End", image: "assets/images/compressed/frieren.webp", video: "", secondary: "Madhouse" },
-      { name: "Fullmetal Alchemist: Brotherhood", image: "assets/images/compressed/fmab.webp", video: "", secondary: "Bones" },
-      { name: "Neon Genesis Evangelion", image: "assets/images/compressed/eva.webp", video: "", secondary: "Gainax, Tatsunoko Production" },
-    ]
-  },
-
-  {
-    id: "anime-of-the-year",
-    tag: "General",
-    name: "Anime of the Year (2025)",
-    description: "The standout anime that dominated 2025 — the one everyone was talking about.",
-    winner: "The Apothecary Diaries Season 2",
-    nominees: [
-      { name: "Apocalypse Hotel", image: "assets/images/compressed/apocalypse_hotel.webp", video: "", secondary: "C2C" },
-      { name: "My Hero Academia Final Season", image: "assets/images/compressed/mha_final.webp", video: "", secondary: "Bones Film" },
-      { name: "The Apothecary Diaries Season 2", image: "assets/images/compressed/apothecary_diaries.webp", video: "", secondary: "OLM, TOHO Animation" },
-      { name: "Takopi's Original Sin", image: "assets/images/compressed/takopi.webp", video: "", secondary: "ENISHIYA" },
-      { name: "The Summer Hikaru Died", image: "assets/images/compressed/the_summer_hikaru_died.webp", video: "", secondary: "CygamesPictures" },
-    ]
-  },
-
-  {
-    id: "best-film",
-    tag: "General",
-    name: "Best Film of All Time",
-    description: "The greatest anime film ever — a cinematic achievement that transcends the screen.",
-    winner: "Your Name",
-    nominees: [
-      { name: "Liz and the Blue Bird", image: "assets/images/compressed/liz_and_blue_bird.webp", video: "", secondary: "Kyoto Animation" },
-      { name: "Look Back", image: "assets/images/compressed/lookback.webp", video: "", secondary: "Studio Durian" },
-      { name: "Paprika", image: "assets/images/compressed/paprika.webp", video: "", secondary: "Madhouse" },
-      { name: "Spirited Away", image: "assets/images/compressed/spirited_away.webp", video: "", secondary: "Studio Ghibli" },
-      { name: "Your Name", image: "assets/images/compressed/your_name.webp", video: "", secondary: "CoMix Wave Films" },
-    ]
-  },
-
-  {
-    id: "film-of-the-year",
-    tag: "General",
-    name: "Film of the Year (2025 - 2026)",
-    description: "The best theatrical anime release from the 2025–2026 period.",
-    winner: "Chainsaw Man – The Movie: Reze Arc",
-    nominees: [
-      { name: "100 Meters", image: "assets/images/compressed/100m.webp", video: "", secondary: "Rock 'n' Roll Mountain" },
-      { name: "Chainsaw Man – The Movie: Reze Arc", image: "assets/images/compressed/csm.webp", video: "", secondary: "MAPPA" },
-      { name: "Colorful Stage! The Movie: A Miku Who Can't Sing", image: "assets/images/compressed/miku.webp", video: "", secondary: "P.A. Works" },
-      { name: "Cosmic Princess Kaguya!", image: "assets/images/compressed/cosmic_princess.webp", video: "", secondary: "Studio Colorido, Studio Chromato" },
-      { name: "Demon Slayer The Movie: Infinity Castle", image: "assets/images/compressed/infinity_castle.webp", video: "", secondary: "ufotable" },
-    ]
-  },
+  // Best Continuing & New Series
 
   {
     id: "best-continuing-series",
@@ -101,21 +42,6 @@ const CATEGORIES = [
       { name: "Kaya-chan Isn't Scary", image: "assets/images/compressed/kaya_chan.webp", secondary: "East Fish Studio" },
       { name: "Shiboyugi: Playing Death Games to Put Food on the Table", image: "assets/images/compressed/shiboyugi.webp", secondary: "Studio Deen" },
       { name: "You and I Are Polar Opposites", image: "assets/images/compressed/polar_opp.webp", secondary: "Lapin Track" },
-    ]
-  },
-
-  {
-    id: "best-original-anime",
-    tag: "General",
-    name: "Best Original Anime",
-    description: "Best anime with a story original to the screen — not adapted from manga, light novel, or game.",
-    winner: "Code Geass",
-    nominees: [
-      { name: "Angel Beats!", image: "assets/images/compressed/angel_beats.webp", video: "", secondary: "P.A. Works" },
-      { name: "Code Geass", image: "assets/images/compressed/code_geass.webp", secondary: "Sunrise" },
-      { name: "Kill la Kill", image: "assets/images/compressed/kill_la_kill.webp", video: "", secondary: "Trigger" },
-      { name: "Vivy: Fluorite Eye's Song", image: "assets/images/compressed/vivy.webp", video: "", secondary: "Wit Studio" },
-      { name: "Shirobako", image: "assets/images/compressed/shirobako.webp", video: "", secondary: "P.A. Works" },
     ]
   },
 
@@ -180,7 +106,128 @@ const CATEGORIES = [
     ]
   },
 
-  // ── GENRE ────────────────────────────────────────────────
+    // ── MUSIC & AUDIO ────────────────────────────────────────
+  {
+    id: "best-score",
+    tag: "Music & Audio",
+    name: "Best Score",
+    description: "The original soundtrack that elevated every scene and lived rent-free in your head.",
+    winner: "Chainsaw Man – The Movie: Reze Arc",
+    nominees: [
+      { name: "Attack on Titan", image: "assets/images/compressed/aot_s3_ost.webp", 
+        video: "assets/clips/AoT_OST_ShingekiNoKyojin.mp4", startTime: 84,
+        secondary: "Hiroyuki Sawano / Kohta Yamamoto" },
+      { name: "Chainsaw Man – The Movie: Reze Arc", image: "assets/images/compressed/csm_reze_ost.webp", 
+        video: "assets/clips/CSM_OST_InThePool.mp4", startTime: 123,
+        secondary: "Kensuke Ushio" },
+      { name: "Made in Abyss", image: "assets/images/compressed/MiA.webp", 
+        video: "assets/clips/MiA_OST_OldStories.mp4", startTime: 198,
+        secondary: "Kevin Penkin" },
+      { name: "Natsume's Book of Friends", image: "assets/images/compressed/natsume_ost.webp", 
+        video: "assets/clips/Natsume_OST_KimigaYobuNamae.mp4", 
+        secondary: "Makoto Yoshimori" },
+      { name: "Uma Musume: Cinderella Gray", image: "assets/images/compressed/uma_ost.webp", 
+        video: "assets/clips/Uma_OST_BrightestHeart.mp4", startTime: 7,
+        secondary: "Kenji Kawai" },
+    ]
+  },
+
+  {
+    id: "best-opening",
+    tag: "Music & Audio",
+    name: "Best Opening Sequence",
+    description: "The opening you never once pressed skip on.",
+    winner: "Idol - YOASOBI", // TODO: Set winner name here
+    nominees: [
+      { name: "Crying for Rain - 美波 (Minami)", image: "assets/images/compressed/dome_kano.webp", 
+        video: "assets/clips/DomesticGirlfriend_OP.mp4", startTime:59,
+        secondary: "Domestic Girlfriend" },
+      { name: "Idol - YOASOBI", image: "assets/images/compressed/idol.webp", 
+        video: "assets/clips/OshiNoKo_OP.mp4", startTime:52,
+        secondary: "Oshi no Ko" },
+      { name: "Kaiju - Sakanaction", image: "assets/images/compressed/orb.webp", 
+        video: "assets/clips/Orb_OP.mp4", 
+        secondary: "Orb: On the Movements of the Earth" },
+      { name: "Tank! - Seatbelts", image: "assets/images/compressed/cowboy_bebop.webp", 
+        video: "assets/clips/CowboyBebop_OP.mp4", startTime:48,
+        secondary: "Cowboy Bebop" },
+      { name: "Where Our Blue Is - Tatsuya Kitani", image: "assets/images/compressed/jjk_op3.webp", 
+        video: "assets/clips/JJK_OP3.mp4", startTime: 47,
+        secondary: "Jujutsu Kaisen Season 2" },
+    ]
+  },
+
+  {
+    id: "best-ending",
+    tag: "Music & Audio",
+    name: "Best Ending Sequence",
+    description: "The ending sequence that gave you the perfect send off after every episode.",
+    winner: "Anytime Anywhere - milet", // TODO: Set winner name here
+    nominees: [
+      { name: "Anytime Anywhere - milet", image: "assets/images/compressed/frieren.webp", 
+        video: "assets/clips/Frieren_ED1.mp4", startTime:47,
+        secondary: "Frieren: Beyond Journey's End" },
+      { name: "Departures - EGOIST", image: "assets/images/compressed/departures.webp", 
+        video: "assets/clips/GuiltyCrown_Departures.mp4", startTime:173,
+        secondary: "Guilty Crown" },
+      { name: "Hare no Hi ni - Reira Ushio", image: "assets/images/compressed/fragrant_ending.webp", 
+        video: "assets/clips/FragrantFlower_ED.mp4", startTime:60,
+        secondary: "The Fragrant Flower Blooms with Dignity" },
+      { name: "The 1 - Muque", image: "assets/images/compressed/the_1.webp", 
+        video: "assets/clips/OnePiece_ED21.mp4", startTime:52,
+        secondary: "One Piece" },
+      { name: "Ray of Light - Shoko Nakagawa", image: "assets/images/compressed/fmab_ed5.webp", 
+        video: "assets/clips/FMAB_ED5.mp4", startTime:53,
+        secondary: "Fullmetal Alchemist: Brotherhood" },
+    ]
+  },
+
+  {
+    id: "best-va-jp",
+    tag: "Music & Audio",
+    name: "Best Voice Artist Performance (Japanese)",
+    description: "An outstanding performance in the Japanese dub that brought a character to life.",
+    winner: "Rie Takahashi", // TODO: Set winner name here
+    nominees: [
+      { name: "Daisuke Ono", image: "assets/images/compressed/daisuke_ono.webp", video: "", secondary: "Kujo Jotaro / Sebastian / Erwin Smith / Jyushimatsu / Itsuki Koizumi" },
+      { name: "Reina Ueda", image: "assets/images/compressed/reina.webp", video: "", secondary: "Reze / Kanao / Ganyu / Chinatsu" },
+      { name: "Rie Takahashi", image: "assets/images/compressed/rie_takahashi.webp", video: "", secondary: "Megumin / Emilia / Hu Tao / Takagi / Ai" },
+      { name: "Takehito Koyasu", image: "assets/images/compressed/koyasu.webp", video: "", secondary: "Dio Brando / Toji / Zeke Yeager / Roswaal / Papa Shirogane" },
+      { name: "Yūki Kaji", image: "assets/images/compressed/kaji_yuki.webp", video: "", secondary: "Eren Yeager / Meliodas / Koichi / Shu / Issei" },
+    ]
+  },
+
+  {
+    id: "best-va-en",
+    tag: "Music & Audio",
+    name: "Best Voice Artist Performance (English)",
+    description: "An outstanding performance in the English dub that made the character entirely their own.",
+    winner: "Ian Sinclair", // TODO: Set winner name here
+    nominees: [
+      { name: "Amber Lee Connors", image: "assets/images/compressed/amber_lee.webp", video: "", secondary: "Furina / Mei Mei / Pieck Finger / Komi Shoko" },
+      { name: "Christopher Sabat", image: "assets/images/compressed/sabat.webp", video: "", secondary: "Roronoa Zoro / Vegeta / All Might / Alex Louis Armstrong" },
+      { name: "Felecia Angelle", image: "assets/images/compressed/felicia.webp", video: "", secondary: "Mona Megistus / Shinoa Hiragi / Emi Yusa / Nakano Miku / Shalltear Bloodfallen" },
+      { name: "Ian Sinclair", image: "assets/images/compressed/ian_sinclair.webp", video: "", secondary: "Narrator (Kaguya Sama Love is War) / Brook / Space Dandy / Tsukasa Shishio / Whis" },
+      { name: "Monica Rial", image: "assets/images/compressed/monica.webp", video: "", secondary: "Mirajane Strauss / Tsubaki Nakatsukasa / Index / Yona / Tanya von Degurechaff" },
+    ]
+  },
+
+  // ── Best Original & Genre ───────────────────────────────────
+  {
+    id: "best-original-anime",
+    tag: "General",
+    name: "Best Original Anime",
+    description: "Best anime with a story original to the screen — not adapted from manga, light novel, or game.",
+    winner: "Code Geass",
+    nominees: [
+      { name: "Angel Beats!", image: "assets/images/compressed/angel_beats.webp", video: "", secondary: "P.A. Works" },
+      { name: "Code Geass", image: "assets/images/compressed/code_geass.webp", secondary: "Sunrise" },
+      { name: "Kill la Kill", image: "assets/images/compressed/kill_la_kill.webp", video: "", secondary: "Trigger" },
+      { name: "Vivy: Fluorite Eye's Song", image: "assets/images/compressed/vivy.webp", video: "", secondary: "Wit Studio" },
+      { name: "Shirobako", image: "assets/images/compressed/shirobako.webp", video: "", secondary: "P.A. Works" },
+    ]
+  },
+
   {
     id: "best-romance",
     tag: "Genre",
@@ -437,103 +484,64 @@ const CATEGORIES = [
     ]
   },
 
-  // ── MUSIC & AUDIO ────────────────────────────────────────
+    // ── Anime/Film of the Year & All Time ────────────────────
   {
-    id: "best-score",
-    tag: "Music & Audio",
-    name: "Best Score",
-    description: "The original soundtrack that elevated every scene and lived rent-free in your head.",
+    id: "film-of-the-year",
+    tag: "General",
+    name: "Film of the Year (2025 - 2026)",
+    description: "The best theatrical anime release from the 2025–2026 period.",
     winner: "Chainsaw Man – The Movie: Reze Arc",
     nominees: [
-      { name: "Attack on Titan", image: "assets/images/compressed/aot_s3_ost.webp", 
-        video: "assets/clips/AoT_OST_ShingekiNoKyojin.mp4", startTime: 84,
-        secondary: "Hiroyuki Sawano / Kohta Yamamoto" },
-      { name: "Chainsaw Man – The Movie: Reze Arc", image: "assets/images/compressed/csm_reze_ost.webp", 
-        video: "assets/clips/CSM_OST_InThePool.mp4", startTime: 123,
-        secondary: "Kensuke Ushio" },
-      { name: "Made in Abyss", image: "assets/images/compressed/MiA.webp", 
-        video: "assets/clips/MiA_OST_OldStories.mp4", startTime: 198,
-        secondary: "Kevin Penkin" },
-      { name: "Natsume's Book of Friends", image: "assets/images/compressed/natsume_ost.webp", 
-        video: "assets/clips/Natsume_OST_KimigaYobuNamae.mp4", 
-        secondary: "Makoto Yoshimori" },
-      { name: "Uma Musume: Cinderella Gray", image: "assets/images/compressed/uma_ost.webp", 
-        video: "assets/clips/Uma_OST_BrightestHeart", startTime: 7,
-        secondary: "Kenji Kawai" },
+      { name: "100 Meters", image: "assets/images/compressed/100m.webp", video: "", secondary: "Rock 'n' Roll Mountain" },
+      { name: "Chainsaw Man – The Movie: Reze Arc", image: "assets/images/compressed/csm.webp", video: "", secondary: "MAPPA" },
+      { name: "Colorful Stage! The Movie: A Miku Who Can't Sing", image: "assets/images/compressed/miku.webp", video: "", secondary: "P.A. Works" },
+      { name: "Cosmic Princess Kaguya!", image: "assets/images/compressed/cosmic_princess.webp", video: "", secondary: "Studio Colorido, Studio Chromato" },
+      { name: "Demon Slayer The Movie: Infinity Castle", image: "assets/images/compressed/infinity_castle.webp", video: "", secondary: "ufotable" },
     ]
   },
 
   {
-    id: "best-opening",
-    tag: "Music & Audio",
-    name: "Best Opening Sequence",
-    description: "The opening you never once pressed skip on.",
-    winner: "Idol - YOASOBI", // TODO: Set winner name here
+    id: "best-film",
+    tag: "General",
+    name: "Best Film of All Time",
+    description: "The greatest anime film ever — a cinematic achievement that transcends the screen.",
+    winner: "Your Name",
     nominees: [
-      { name: "Crying for Rain - 美波 (Minami)", image: "assets/images/compressed/dome_kano.webp", 
-        video: "assets/clips/DomesticGirlfriend_OP.mp4", startTime:59,
-        secondary: "Domestic Girlfriend" },
-      { name: "Idol - YOASOBI", image: "assets/images/compressed/idol.webp", 
-        video: "assets/clips/OshiNoKo_OP.mp4", secondary: "Oshi no Ko" },
-      { name: "Kaiju - Sakanaction", image: "assets/images/compressed/orb.webp", 
-        video: "assets/clips/Orb_OP.mp4", 
-        secondary: "Orb: On the Movements of the Earth" },
-      { name: "Tank! - Seatbelts", image: "assets/images/compressed/cowboy_bebop.webp", 
-        video: "assets/clips/CowboyBebop_OP.mp4", 
-        secondary: "Cowboy Bebop" },
-      { name: "Where Our Blue Is - Tatsuya Kitani", image: "assets/images/compressed/jjk_op3.webp", 
-        video: "assets/clips/JJK_OP3.mp4", startTime: 47,
-        secondary: "Jujutsu Kaisen Season 2" },
+      { name: "Liz and the Blue Bird", image: "assets/images/compressed/liz_and_blue_bird.webp", video: "", secondary: "Kyoto Animation" },
+      { name: "Look Back", image: "assets/images/compressed/lookback.webp", video: "", secondary: "Studio Durian" },
+      { name: "Paprika", image: "assets/images/compressed/paprika.webp", video: "", secondary: "Madhouse" },
+      { name: "Spirited Away", image: "assets/images/compressed/spirited_away.webp", video: "", secondary: "Studio Ghibli" },
+      { name: "Your Name", image: "assets/images/compressed/your_name.webp", video: "", secondary: "CoMix Wave Films" },
+    ]
+  },  
+
+  {
+    id: "anime-of-the-year",
+    tag: "General",
+    name: "Anime of the Year (2025)",
+    description: "The standout anime that dominated 2025 — the one everyone was talking about.",
+    winner: "The Apothecary Diaries Season 2",
+    nominees: [
+      { name: "Apocalypse Hotel", image: "assets/images/compressed/apocalypse_hotel.webp", video: "", secondary: "C2C" },
+      { name: "My Hero Academia Final Season", image: "assets/images/compressed/mha_final.webp", video: "", secondary: "Bones Film" },
+      { name: "The Apothecary Diaries Season 2", image: "assets/images/compressed/apothecary_diaries.webp", video: "", secondary: "OLM, TOHO Animation" },
+      { name: "Takopi's Original Sin", image: "assets/images/compressed/takopi.webp", video: "", secondary: "ENISHIYA" },
+      { name: "The Summer Hikaru Died", image: "assets/images/compressed/the_summer_hikaru_died.webp", video: "", secondary: "CygamesPictures" },
     ]
   },
 
   {
-    id: "best-ending",
-    tag: "Music & Audio",
-    name: "Best Ending Sequence",
-    description: "The ending sequence that gave you the perfect send off after every episode.",
-    winner: "Anytime Anywhere - milet", // TODO: Set winner name here
+    id: "best-anime",
+    tag: "General",
+    name: "Best Anime of All Time",
+    description: "The greatest anime series ever made — a timeless masterpiece that defines the medium.",
+    winner: "Frieren: Beyond Journey's End",
     nominees: [
-      { name: "Anytime Anywhere - milet", image: "assets/images/compressed/frieren.webp", 
-        video: "assets/clips/Frieren_ED1.mp4", secondary: "Frieren: Beyond Journey's End" },
-      { name: "Departures - EGOIST", image: "assets/images/compressed/departures.webp", 
-        video: "assets/clips/GuiltyCrown_Departures.mp4", secondary: "Guilty Crown" },
-      { name: "Hare no Hi ni - Reira Ushio", image: "assets/images/compressed/fragrant_ending.webp", 
-        video: "assets/clips/FragrantFlower_ED.mp4", secondary: "The Fragrant Flower Blooms with Dignity" },
-      { name: "The 1 - Muque", image: "assets/images/compressed/the_1.webp", 
-        video: "assets/clips/OnePiece_ED21.mp4", secondary: "One Piece" },
-      { name: "Ray of Light - Shoko Nakagawa", image: "assets/images/compressed/fmab_ed5.webp", 
-        video: "assets/clips/FMAB_ED5.mp4", secondary: "Fullmetal Alchemist: Brotherhood" },
-    ]
-  },
-
-  {
-    id: "best-va-jp",
-    tag: "Music & Audio",
-    name: "Best Voice Artist Performance (Japanese)",
-    description: "An outstanding performance in the Japanese dub that brought a character to life.",
-    winner: "Rie Takahashi", // TODO: Set winner name here
-    nominees: [
-      { name: "Daisuke Ono", image: "assets/images/compressed/daisuke_ono.webp", video: "", secondary: "Kujo Jotaro / Sebastian / Erwin Smith / Jyushimatsu / Itsuki Koizumi" },
-      { name: "Reina Ueda", image: "assets/images/compressed/reina.webp", video: "", secondary: "Reze / Kanao / Ganyu / Chinatsu" },
-      { name: "Rie Takahashi", image: "assets/images/compressed/rie_takahashi.webp", video: "", secondary: "Megumin / Emilia / Hu Tao / Takagi / Ai" },
-      { name: "Takehito Koyasu", image: "assets/images/compressed/koyasu.webp", video: "", secondary: "Dio Brando / Toji / Zeke Yeager / Roswaal / Papa Shirogane" },
-      { name: "Yūki Kaji", image: "assets/images/compressed/kaji_yuki.webp", video: "", secondary: "Eren Yeager / Meliodas / Koichi / Shu / Issei" },
-    ]
-  },
-
-  {
-    id: "best-va-en",
-    tag: "Music & Audio",
-    name: "Best Voice Artist Performance (English)",
-    description: "An outstanding performance in the English dub that made the character entirely their own.",
-    winner: "Ian Sinclair", // TODO: Set winner name here
-    nominees: [
-      { name: "Amber Lee Connors", image: "assets/images/compressed/amber_lee.webp", video: "", secondary: "Furina / Mei Mei / Pieck Finger / Komi Shoko" },
-      { name: "Christopher Sabat", image: "assets/images/compressed/sabat.webp", video: "", secondary: "Roronoa Zoro / Vegeta / All Might / Alex Louis Armstrong" },
-      { name: "Felecia Angelle", image: "assets/images/compressed/felicia.webp", video: "", secondary: "Mona Megistus / Shinoa Hiragi / Emi Yusa / Nakano Miku / Shalltear Bloodfallen" },
-      { name: "Ian Sinclair", image: "assets/images/compressed/ian_sinclair.webp", video: "", secondary: "Narrator (Kaguya Sama Love is War) / Brook / Space Dandy / Tsukasa Shishio / Whis" },
-      { name: "Monica Rial", image: "assets/images/compressed/monica.webp", video: "", secondary: "Mirajane Strauss / Tsubaki Nakatsukasa / Index / Yona / Tanya von Degurechaff" },
+      { name: "Clannad", image: "assets/images/compressed/clannad.webp", video: "", secondary: "Kyoto Animation" },
+      { name: "Death Note", image: "assets/images/compressed/death_note.webp", video: "", secondary: "Madhouse" },
+      { name: "Frieren: Beyond Journey's End", image: "assets/images/compressed/frieren.webp", video: "", secondary: "Madhouse" },
+      { name: "Fullmetal Alchemist: Brotherhood", image: "assets/images/compressed/fmab.webp", video: "", secondary: "Bones" },
+      { name: "Neon Genesis Evangelion", image: "assets/images/compressed/eva.webp", video: "", secondary: "Gainax, Tatsunoko Production" },
     ]
   },
 

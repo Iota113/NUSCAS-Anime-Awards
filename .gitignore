@@ -3,3 +3,6 @@ admin/
 
 # Ignore the setup guide
 SETUP_GUIDE.md
+
+*.csv
+set-winners.js
