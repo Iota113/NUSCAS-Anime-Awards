@@ -7,7 +7,7 @@
 // ── CONFIG ───────────────────────────────────────────────────
 const CONFIG = {
   // Paste your Google Apps Script Web App URL here after setup
-  GOOGLE_SHEET_URL: "https://script.google.com/macros/s/AKfycbypVRc6k89MVCiw04BYWTmSvytkAPJ5v45sJ2bDHkjFaZDKvbPnKM53OjigfXMgjVwP/exec",
+  GOOGLE_SHEET_URL: "https://script.google.com/macros/s/AKfycbztsBpwyEUT3g-E9t0yx27IRrNLWKbj7dfjH_0slVniEsw77kDp_bZpYsUouA4M6DY/exec",
 
   // Change this to prevent duplicate submissions
   // "localStorage" = one vote per browser (default)
@@ -133,7 +133,6 @@ function renderPage(pageIndex) {
   `;
   container.appendChild(section);
 
-
   // Scroll to top of main content smoothly, accounting for fixed header
   const mainContent = document.getElementById("main-content");
   const isMobile = window.innerWidth <= 768;
@@ -239,6 +238,7 @@ function selectNominee(categoryId, nomineeIndex) {
 
   saveVotesToStorage();
   updateProgressBar();
+  updateSubmitButton();
 
   // Refresh the dot row so the current dot lights up as voted immediately
   const dotsEl = document.querySelector(".page-dots");
@@ -365,6 +365,13 @@ async function confirmSubmit() {
     showToast("❌ Submission failed. Please try again.", true);
     console.error("Submission error:", err);
   }
+}
+
+function updateSubmitButton() {
+  const btn = document.querySelector(".btn-submit-nav");
+  if (!btn) return; // not on last page, do nothing
+  const remaining = CATEGORIES.length - Object.keys(currentVotes).length;
+  btn.textContent = remaining === 0 ? "🏆 Submit Votes" : `⚠️ ${remaining} left`;
 }
 
 // ── GOOGLE SHEETS INTEGRATION ─────────────────────────────────

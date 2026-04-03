@@ -428,7 +428,7 @@ const CATEGORIES = [
         video: "assets/clips/Natsume_OST_KimigaYobuNamae.mp4", 
         secondary: "Makoto Yoshimori" },
       { name: "Uma Musume: Cinderella Gray", image: "assets/images/compressed/uma_ost.webp", 
-        video: "assets/clips/Uma_OST_BrightestHeart", startTime: 7,
+        video: "assets/clips/Uma_OST_BrightestHeart.mp4", startTime: 7,
         secondary: "Kenji Kawai" },
     ]
   },
